@@ -8,384 +8,418 @@
 <style>
 *{box-sizing:border-box}
 body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#07101d;
-  color:white;
-  overflow:hidden
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#0d1117;
+    color:white;
+    overflow-x:hidden
 }
 button,input,select{
-  font:inherit
+    font:inherit
 }
 button{
-  border:0;
-  cursor:pointer;
-  color:white;
-  background:#243552;
-  border-radius:10px;
-  padding:10px 14px;
-  font-weight:bold
+    border:0;
+    border-radius:10px;
+    padding:10px 14px;
+    background:#293142;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.15s
 }
-button:hover{filter:brightness(1.25)}
+button:hover{
+    transform:translateY(-1px);
+    filter:brightness(1.2)
+}
 input,select{
-  background:#101d31;
-  color:white;
-  border:1px solid #334866;
-  border-radius:9px;
-  padding:10px
+    width:100%;
+    padding:11px;
+    margin:5px 0;
+    border-radius:9px;
+    border:1px solid #444d61;
+    background:#151b25;
+    color:white
 }
+.hidden{display:none!important}
 
-/* LOGIN */
 #login{
-  position:fixed;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:
-    radial-gradient(circle at 50% 30%,#284c83 0,#07101d 55%);
-  z-index:1000
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#101827,#35166b)
 }
 .loginBox{
-  width:390px;
-  max-width:92%;
-  padding:35px;
-  border-radius:25px;
-  background:#101b2c;
-  border:1px solid #385579;
-  box-shadow:0 20px 70px #000b;
-  text-align:center
+    width:390px;
+    max-width:92%;
+    background:#171d29;
+    border:2px solid #59647e;
+    border-radius:24px;
+    padding:30px;
+    box-shadow:0 25px 100px #000
 }
-.logo{
-  font-size:42px;
-  font-weight:1000;
-  margin-bottom:8px
-}
-.logo span{color:#5cff9b}
-.loginBox input{
-  width:100%;
-  margin:7px 0
+.loginBox h1{
+    text-align:center;
+    font-size:36px
 }
 .loginBox button{
-  width:100%;
-  margin-top:10px;
-  background:#35bd73
+    width:100%;
+    margin-top:8px
 }
-#loginMsg{min-height:22px;color:#ff7373}
 
-/* APP */
-#app{display:none;height:100vh}
+#app{display:none}
+
 .sidebar{
-  position:fixed;
-  left:0;
-  top:0;
-  bottom:0;
-  width:225px;
-  background:#0b1525;
-  border-right:1px solid #263b58;
-  padding:15px 10px;
-  overflow:auto;
-  z-index:20
+    position:fixed;
+    left:0;
+    top:0;
+    bottom:0;
+    width:235px;
+    padding:15px;
+    background:#151a24;
+    border-right:1px solid #30394b;
+    overflow-y:auto;
+    z-index:100
 }
-.sideLogo{
-  font-size:25px;
-  font-weight:1000;
-  text-align:center;
-  padding:12px 0 18px
+.logo{
+    text-align:center;
+    font-size:25px;
+    font-weight:1000;
+    padding:10px 0 20px
 }
-.sideLogo span{color:#5cff9b}
-.nav{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  width:100%;
-  margin:4px 0;
-  background:transparent;
-  text-align:left
+.nav button{
+    width:100%;
+    display:block;
+    text-align:left;
+    margin:6px 0
 }
-.nav.active{background:#27476d}
-.ownerNav{
-  background:linear-gradient(90deg,#684000,#9d6400);
-  display:none
+.nav button:hover{
+    background:#7258ff
 }
 
 .main{
-  margin-left:225px;
-  height:100vh;
-  overflow:auto;
-  background:
-    radial-gradient(circle at 75% 0,#183453 0,transparent 35%),
-    #07101d
-}
-.top{
-  height:70px;
-  position:sticky;
-  top:0;
-  z-index:15;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 22px;
-  background:#091423eF;
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid #263b58
-}
-.money{
-  display:flex;
-  gap:10px
-}
-.money span{
-  padding:9px 13px;
-  background:#12233b;
-  border-radius:12px
-}
-#announcements{
-  position:fixed;
-  top:80px;
-  left:50%;
-  transform:translateX(-50%);
-  z-index:100;
-  width:min(650px,90%);
-  pointer-events:none
-}
-.notice{
-  background:#13243b;
-  border:1px solid #5274a4;
-  box-shadow:0 10px 30px #0008;
-  border-radius:12px;
-  padding:12px 16px;
-  margin:7px;
-  animation:notice .35s
-}
-@keyframes notice{
-  from{transform:translateY(-20px);opacity:0}
-  to{transform:translateY(0);opacity:1}
+    margin-left:235px;
+    padding:20px;
+    min-height:100vh
 }
 
-.page{display:none;padding:25px}
+.topbar{
+    position:sticky;
+    top:10px;
+    z-index:90;
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    padding:13px 18px;
+    border-radius:16px;
+    background:#171d29;
+    border:1px solid #353e52
+}
+
+.page{display:none}
 .page.active{display:block}
-h1{margin-top:0}
-.card{
-  background:#101d30;
-  border:1px solid #263f60;
-  border-radius:16px;
-  padding:18px;
-  margin-bottom:15px
+
+.card,.panel{
+    margin:14px 0;
+    padding:18px;
+    border-radius:17px;
+    background:#181e2a;
+    border:1px solid #353e50
 }
+
+.ownerPanel{
+    border:2px solid #ffd43b;
+    background:linear-gradient(135deg,#211d0e,#181e2a)
+}
+
+.adminPanel{
+    border:2px solid #ff536d
+}
+
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:14px
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:12px
 }
 
-/* CONVEYOR */
+.stat{
+    padding:17px;
+    border-radius:15px;
+    background:#222a39
+}
+.stat b{
+    display:block;
+    font-size:28px;
+    margin-top:5px
+}
+
 .conveyor{
-  position:relative;
-  height:210px;
-  overflow:hidden;
-  border-radius:18px;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      #252f3c 0 35px,
-      #34404e 35px 70px
+    height:190px;
+    position:relative;
+    overflow:hidden;
+    border-radius:18px;
+    background:#17191e;
+    border:8px solid #090b0f;
+    box-shadow:inset 0 0 30px #000
+}
+.belt{
+    position:absolute;
+    left:0;
+    right:0;
+    top:58px;
+    height:72px;
+    background:repeating-linear-gradient(
+        90deg,
+        #4a4d54 0 35px,
+        #30333a 35px 70px
     );
-  border:8px solid #171f2c;
-  margin-top:20px
+    animation:beltMove 1s linear infinite
 }
-.conveyor:before{
-  content:"";
-  position:absolute;
-  left:0;right:0;
-  top:50%;
-  height:8px;
-  background:#0b1018;
-  transform:translateY(-50%)
-}
-.eggOnBelt{
-  position:absolute;
-  top:calc(50% - 45px);
-  width:70px;
-  height:90px;
-  border-radius:50% 50% 46% 46%;
-  background:linear-gradient(135deg,#fff,#8bc6ff);
-  border:4px solid white;
-  box-shadow:0 0 20px #8bd7ff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:30px;
-  z-index:3;
-  animation:moveEgg linear forwards
-}
-@keyframes moveEgg{
-  from{left:-90px}
-  to{left:calc(100% + 100px)}
+@keyframes beltMove{
+    from{background-position:0}
+    to{background-position:70px}
 }
 
-/* WORLD */
-.worldGrid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-  gap:12px
+.egg{
+    position:absolute;
+    top:69px;
+    width:72px;
+    height:84px;
+    border-radius:50% 50% 46% 46%;
+    border:4px solid white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-size:28px;
+    z-index:5;
+    box-shadow:0 0 25px currentColor;
+    animation:eggBob .5s infinite alternate
 }
-.world{
-  min-height:145px;
-  border-radius:17px;
-  padding:17px;
-  background:linear-gradient(145deg,#142945,#0c1828);
-  border:1px solid #2e496b;
-  position:relative;
-  overflow:hidden
+.eggName{
+    position:absolute;
+    top:88px;
+    width:180px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:11px;
+    font-weight:1000;
+    text-shadow:0 2px 4px #000
 }
-.world.locked{
-  display:none
-}
-.world.unlocked{
-  display:block
-}
-.worldEmoji{font-size:45px}
-.worldName{
-  font-size:19px;
-  font-weight:900
-}
-.worldEggs{
-  font-size:12px;
-  color:#9db1ca;
-  margin-top:8px
-}
-
-/* ANIMALS */
-.animal{
-  padding:15px;
-  border-radius:15px;
-  background:#14243a;
-  border:1px solid #304a6d
-}
-.animalIcon{font-size:40px}
-.rarity{font-weight:900}
-.mutation{
-  color:#8df9ff;
-  font-size:12px
+@keyframes eggBob{
+    from{transform:translateY(0) rotate(-2deg)}
+    to{transform:translateY(-4px) rotate(2deg)}
 }
 
-/* OWNER */
-.ownerBox{
-  border:1px solid #986c19;
-  background:linear-gradient(145deg,#211a0c,#111827);
+.eggCard{
+    text-align:center;
+    border-radius:17px;
+    padding:15px;
+    background:#202735;
+    border:2px solid #414a5e
 }
-.ownerTabs{
-  display:flex;
-  flex-wrap:wrap;
-  gap:7px;
-  margin-bottom:15px
-}
-.ownerTabs button.active{background:#b47a13}
-.ownerSection{display:none}
-.ownerSection.active{display:block}
-.toolGrid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:12px
-}
-.tool{
-  background:#111d2e;
-  border:1px solid #334b6d;
-  padding:15px;
-  border-radius:14px
-}
-.tool h3{margin-top:0}
-.tool input,.tool select{
-  width:100%;
-  margin:4px 0
-}
-.tool button{margin-top:5px;width:100%}
-
-/* UNLOCK */
-#unlockAnimation{
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:500;
-  background:#0009;
-  align-items:center;
-  justify-content:center;
-  pointer-events:none
-}
-.unlockBox{
-  text-align:center;
-  animation:worldPop 1.7s ease
-}
-.unlockEmoji{
-  font-size:130px;
-  filter:drop-shadow(0 0 35px #fff)
-}
-.unlockTitle{
-  font-size:55px;
-  font-weight:1000;
-  text-shadow:0 0 30px #fff
-}
-.unlockBy{
-  font-size:20px;
-  color:#d8e8ff
-}
-@keyframes worldPop{
-  0%{transform:scale(.1) rotate(-15deg);opacity:0}
-  45%{transform:scale(1.2) rotate(5deg);opacity:1}
-  75%{transform:scale(1)}
-  100%{transform:scale(1.1);opacity:0}
+.eggVisual{
+    width:70px;
+    height:82px;
+    margin:auto;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:32px;
+    border:4px solid white;
+    box-shadow:0 0 20px currentColor
 }
 
-/* EVENT */
-#eventFX{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:400;
-  display:none
+.animalRow,.playerRow{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:12px;
+    margin:7px 0;
+    border-radius:11px;
+    background:#222a39
 }
-.rainbow{
-  display:block!important;
-  background:
-    linear-gradient(
-      115deg,
-      #f00,#ff7a00,#fff000,#00ff66,#00d9ff,#5855ff,#cc00ff,#ff0088
+
+.rarity{
+    padding:4px 7px;
+    border-radius:6px;
+    font-weight:bold
+}
+
+.rarity-Common{background:#777}
+.rarity-Uncommon{background:#198b3a}
+.rarity-Rare{background:#1768bd}
+.rarity-Epic{background:#7c2bb0}
+.rarity-Legendary{background:#bd7b00}
+.rarity-Mythic{background:#b11c49}
+.rarity-Divine{background:#9274ff}
+.rarity-Cosmic{background:#263b91}
+.rarity-Celestial{background:#7046b5}
+.rarity-Galactic{background:linear-gradient(90deg,#f0f,#0ff)}
+.rarity-Secret{background:#080808;border:1px solid #f0f}
+.rarity-Godly{background:linear-gradient(90deg,#ffd700,#ff4b00)}
+.rarity-Omniversal{background:linear-gradient(90deg,#f00,#0f0,#00f,#f0f)}
+
+.announcement{
+    position:fixed;
+    top:18px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:6000;
+    padding:14px 25px;
+    border-radius:15px;
+    background:#111722;
+    border:2px solid #ffd43b;
+    box-shadow:0 10px 50px #000;
+    font-weight:1000
+}
+
+.toast{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    z-index:7000;
+    padding:15px;
+    border-radius:12px;
+    background:#171d29;
+    border:2px solid #56ff91;
+    box-shadow:0 10px 30px #000
+}
+
+/* ANIMATION OVERLAY */
+#animationOverlay{
+    position:fixed;
+    inset:0;
+    z-index:5000;
+    display:none;
+    pointer-events:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background:rgba(0,0,0,.35)
+}
+.animationTitle{
+    font-size:clamp(35px,7vw,90px);
+    font-weight:1000;
+    text-align:center;
+    text-shadow:0 5px 20px #000
+}
+.animationSub{
+    font-size:24px;
+    font-weight:bold
+}
+
+/* WORLD UNLOCK */
+.worldUnlock{
+    animation:worldUnlock 2.5s forwards
+}
+@keyframes worldUnlock{
+    0%{
+        opacity:0;
+        transform:scale(.2) rotate(-15deg)
+    }
+    35%{
+        opacity:1;
+        transform:scale(1.3) rotate(4deg)
+    }
+    60%{
+        transform:scale(.9) rotate(-2deg)
+    }
+    100%{
+        opacity:0;
+        transform:scale(1.2)
+    }
+}
+
+/* RAINBOW */
+#rainbowEffect{
+    position:fixed;
+    inset:0;
+    z-index:4500;
+    display:none;
+    pointer-events:none;
+    opacity:.35;
+    background:linear-gradient(
+        90deg,
+        red,
+        orange,
+        yellow,
+        lime,
+        cyan,
+        blue,
+        violet,
+        pink
     );
-  background-size:600% 600%;
-  animation:rainbow 2s infinite
+    animation:rainbowSpin 1s linear infinite
 }
-@keyframes rainbow{
-  0%{background-position:0 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0 50%}
+@keyframes rainbowSpin{
+    from{filter:hue-rotate(0)}
+    to{filter:hue-rotate(360deg)}
 }
 
-/* MODAL */
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:300;
-  background:#000b;
-  align-items:center;
-  justify-content:center
+/* PARTICLES */
+.particle{
+    position:fixed;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:5500;
+    animation:particleFly 1.5s forwards
 }
-.modalBox{
-  width:min(700px,92%);
-  max-height:85vh;
-  overflow:auto;
-  background:#101c2e;
-  border:1px solid #39587e;
-  border-radius:20px;
-  padding:22px
+@keyframes particleFly{
+    from{
+        transform:translate(0,0) scale(1);
+        opacity:1
+    }
+    to{
+        transform:translate(var(--x),var(--y)) scale(0);
+        opacity:0
+    }
+}
+
+/* COUNTDOWN */
+.countdown{
+    padding:25px;
+    text-align:center;
+    border-radius:18px;
+    background:#111721;
+    border:2px solid #ffd43b;
+    font-size:35px;
+    font-weight:1000
+}
+
+/* POLL */
+.pollOption{
+    width:100%;
+    margin:6px 0;
+    background:#303a4e
 }
 
 @media(max-width:800px){
-  .sidebar{width:70px}
-  .sideLogo{font-size:0}
-  .sideLogo:first-letter{font-size:25px}
-  .nav span{display:none}
-  .main{margin-left:70px}
+    .sidebar{
+        width:72px
+    }
+    .logo{
+        font-size:0
+    }
+    .logo:first-letter{
+        font-size:25px
+    }
+    .nav button{
+        font-size:0;
+        text-align:center
+    }
+    .nav button:first-letter{
+        font-size:23px
+    }
+    .main{
+        margin-left:72px
+    }
 }
 </style>
 </head>
@@ -394,1789 +428,2864 @@ h1{margin-top:0}
 
 <!-- LOGIN -->
 <div id="login">
-  <div class="loginBox">
-    <div class="logo">🥚 COLLECT AN <span>EGG</span></div>
-    <p>Enter your account to play.</p>
+    <div class="loginBox">
+        <h1>🥚 Collect an Egg</h1>
 
-    <input id="loginUser" placeholder="Username">
-    <input id="loginPass" type="password" placeholder="Password">
+        <input id="loginName" placeholder="Username">
+        <input id="loginPassword" type="password" placeholder="Password">
 
-    <button onclick="login()">LOGIN</button>
+        <button style="background:#7058ff" onclick="login()">
+            🔐 LOGIN
+        </button>
 
-    <div id="loginMsg"></div>
+        <button onclick="guestLogin()">
+            👤 PLAY AS GUEST
+        </button>
 
-    <small>
-      Normal players can use any username with any password.<br>
-      Owner accounts have Owner Panel access.
-    </small>
-  </div>
+        <p style="font-size:12px;color:#929caf">
+            Owner accounts are built into this prototype.
+        </p>
+    </div>
 </div>
 
-<!-- APP -->
+<div id="rainbowEffect"></div>
+
+<!-- ANIMATION OVERLAY -->
+<div id="animationOverlay">
+    <div id="animationEmoji" class="animationTitle">🌎</div>
+    <div id="animationTitle" class="animationTitle"></div>
+    <div id="animationSub" class="animationSub"></div>
+</div>
+
 <div id="app">
 
-  <aside class="sidebar">
-    <div class="sideLogo">🥚 <span>COLLECT</span></div>
+<!-- SIDEBAR -->
+<aside class="sidebar">
 
-    <button class="nav active" data-page="home">🏠 <span>Home</span></button>
-    <button class="nav" data-page="factory">🏭 <span>Factory</span></button>
-    <button class="nav" data-page="animals">🐾 <span>Animals</span></button>
-    <button class="nav" data-page="worlds">🌎 <span>Worlds</span></button>
-    <button class="nav" data-page="fusion">🔥 <span>Fusion</span></button>
-    <button class="nav" data-page="trading">🔄 <span>Trading</span></button>
-    <button class="nav" data-page="quests">📜 <span>Quests</span></button>
-    <button class="nav" data-page="shop">🛒 <span>Shop</span></button>
-    <button class="nav" data-page="music">🎵 <span>Music</span></button>
-    <button class="nav" data-page="settings">⚙️ <span>Settings</span></button>
+    <div class="logo">🥚 EGG</div>
 
-    <button id="ownerNav" class="nav ownerNav" data-page="owner">
-      👑 <span>Owner Panel</span>
-    </button>
-  </aside>
+    <div class="nav">
+        <button onclick="page('home')">🏠 Home</button>
+        <button onclick="page('factory')">🏭 Factory</button>
+        <button onclick="page('animals')">🐾 Animals</button>
+        <button onclick="page('worlds')">🌎 Worlds</button>
+        <button onclick="page('fusion')">🔥 Fusion</button>
+        <button onclick="page('trading')">🔄 Trading</button>
+        <button onclick="page('quests')">📜 Quests</button>
+        <button onclick="page('shop')">🛒 Shop</button>
+        <button onclick="page('music')">🎵 Music</button>
+        <button onclick="page('settings')">⚙️ Settings</button>
 
-  <main class="main">
+        <button id="adminNav" class="hidden"
+                onclick="page('admin')">
+            🛡️ Admin Panel
+        </button>
 
-    <header class="top">
-      <strong id="welcome">Welcome!</strong>
+        <button id="ownerNav" class="hidden"
+                onclick="page('owner')">
+            👑 Owner Panel
+        </button>
+    </div>
+</aside>
 
-      <div class="money">
-        <span>🪙 <b id="coins">100</b></span>
-        <span>💎 <b id="gems">100</b></span>
-        <span>🌎 <b id="currentWorld">Grasslands</b></span>
-      </div>
-    </header>
+<main class="main">
 
-    <div id="announcements"></div>
+<!-- TOP -->
+<div class="topbar">
+    <div>
+        👤 <b id="usernameDisplay">Guest</b>
+        <span id="roleDisplay"></span>
+    </div>
 
-    <!-- HOME -->
-    <section id="home" class="page active">
-      <h1>🥚 Collect an Egg</h1>
+    <div>
+        💰 <b id="coins">100</b>
+        &nbsp;&nbsp;
+        💎 <b id="gems">100</b>
+    </div>
+</div>
 
-      <div class="grid">
-        <div class="card">
-          <h2>🪙 Coins</h2>
-          <h1 id="homeCoins">100</h1>
+<!-- HOME -->
+<section id="home" class="page active">
+
+    <h1>🥚 Collect an Egg</h1>
+
+    <div class="grid">
+        <div class="stat">
+            💰 Coins
+            <b id="homeCoins">100</b>
         </div>
 
-        <div class="card">
-          <h2>💎 Gems</h2>
-          <h1 id="homeGems">100</h1>
+        <div class="stat">
+            💎 Gems
+            <b id="homeGems">100</b>
         </div>
 
-        <div class="card">
-          <h2>🐾 Animals</h2>
-          <h1 id="animalCount">0</h1>
+        <div class="stat">
+            🐾 Animals
+            <b id="animalCount">0</b>
         </div>
-      </div>
 
-      <div class="card">
+        <div class="stat">
+            🌎 Worlds
+            <b id="worldCount">1</b>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🗳️ Current Poll</h2>
+        <div id="homePoll">
+            No active poll.
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>⏰ Countdown</h2>
+        <div id="homeCountdown">
+            No active countdown.
+        </div>
+    </div>
+
+</section>
+
+<!-- FACTORY -->
+<section id="factory" class="page">
+
+    <h1>🏭 Factory</h1>
+
+    <div class="card">
+
         <h2>🥚 Egg Conveyor</h2>
-        <p>Eggs travel across the conveyor and disappear at the end.</p>
-        <div class="conveyor" id="homeConveyor"></div>
-      </div>
-    </section>
 
-    <!-- FACTORY -->
-    <section id="factory" class="page">
-      <h1>🏭 Factory</h1>
+        <div class="conveyor">
+            <div class="belt"></div>
+            <div id="eggBelt"></div>
+        </div>
 
-      <div class="card">
-        <h2>🥚 Basic Egg</h2>
-        <p>Cost: 100 🪙</p>
-        <button onclick="buyEgg()">Buy Basic Egg</button>
-      </div>
+    </div>
 
-      <div class="card">
-        <h2>Egg Conveyor</h2>
-        <div class="conveyor" id="factoryConveyor"></div>
-      </div>
-    </section>
+    <div class="card">
 
-    <!-- ANIMALS -->
-    <section id="animals" class="page">
-      <h1>🐾 Animals</h1>
-      <div id="animalsGrid" class="grid"></div>
-    </section>
+        <h2>🛒 Eggs</h2>
 
-    <!-- WORLDS -->
-    <section id="worlds" class="page">
-      <h1>🌎 Worlds</h1>
+        <div id="eggShop" class="grid"></div>
 
-      <div class="card">
-        <b>Only worlds unlocked by an Owner appear here.</b>
-      </div>
+    </div>
 
-      <div id="worldGrid" class="worldGrid"></div>
-    </section>
+</section>
 
-    <!-- FUSION -->
-    <section id="fusion" class="page">
-      <h1>🔥 Fusion</h1>
+<!-- ANIMALS -->
+<section id="animals" class="page">
 
-      <div class="card">
-        <h2>Select two animals</h2>
+    <h1>🐾 Animals</h1>
+
+    <div id="animalsList"></div>
+
+</section>
+
+<!-- WORLDS -->
+<section id="worlds" class="page">
+
+    <h1>🌎 Worlds</h1>
+
+    <div id="worldList" class="grid"></div>
+
+</section>
+
+<!-- FUSION -->
+<section id="fusion" class="page">
+
+    <h1>🔥 Fusion</h1>
+
+    <div class="card">
 
         <select id="fusionA"></select>
         <select id="fusionB"></select>
 
+        <input id="fusionTime"
+               type="number"
+               min="1"
+               value="10"
+               placeholder="Fusion time">
+
+        <button onclick="startFusion()">
+            🔥 START FUSION
+        </button>
+
+        <div id="fusionStatus"></div>
+
+    </div>
+
+</section>
+
+<!-- TRADING -->
+<section id="trading" class="page">
+
+    <h1>🔄 Trading</h1>
+
+    <div class="card">
+        <h2>Online Players</h2>
+        <div id="tradePlayers"></div>
+    </div>
+
+    <div id="tradeBox" class="card hidden"></div>
+
+</section>
+
+<!-- QUESTS -->
+<section id="quests" class="page">
+
+    <h1>📜 Quests</h1>
+
+    <div class="card">
+        🥚 Buy Eggs
         <br><br>
+        <button onclick="claimQuest('buy')">
+            🎁 Claim 250 Coins
+        </button>
+    </div>
 
-        <label>Fusion Time</label>
-        <input id="fusionTime" type="number" value="10" min="1">
-
-        <button onclick="fuseAnimals()">🔥 FUSE</button>
-
-        <p id="fusionStatus"></p>
-      </div>
-    </section>
-
-    <!-- TRADING -->
-    <section id="trading" class="page">
-      <h1>🔄 Trading</h1>
-
-      <div class="card">
-        <h2>Player-to-player trading</h2>
-        <input id="tradePlayer" placeholder="Player username">
-        <button onclick="sendTrade()">Send Trade Request</button>
-        <div id="tradeRequests"></div>
-      </div>
-
-      <div class="card">
-        <h2>Your animals</h2>
-        <div id="tradeAnimals" class="grid"></div>
-      </div>
-    </section>
-
-    <!-- QUESTS -->
-    <section id="quests" class="page">
-      <h1>📜 Quests</h1>
-
-      <div class="card">
-        <h2>🥚 Egg Hunter</h2>
-        <p>Collect 5 eggs.</p>
-        <button onclick="claimQuest('egg')">Claim Reward</button>
-      </div>
-
-      <div class="card">
-        <h2>🐾 Animal Collector</h2>
-        <p>Get your first animal.</p>
-        <button onclick="claimQuest('animal')">Claim Reward</button>
-      </div>
-    </section>
-
-    <!-- SHOP -->
-    <section id="shop" class="page">
-      <h1>🛒 Shop</h1>
-
-      <div class="grid">
-        <div class="card">
-          <h2>💎 100 Gems</h2>
-          <button onclick="buyGems()">Buy</button>
-        </div>
-
-        <div class="card">
-          <h2>🪙 Coin Pack</h2>
-          <button onclick="giveCoinsLocal(1000)">Buy 1,000 Coins</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- MUSIC -->
-    <section id="music" class="page">
-      <h1>🎵 Music</h1>
-
-      <div class="card">
-        <h2 id="musicName">Collect an Egg Radio</h2>
-
-        <button onclick="musicToggle()">▶️ Play / Pause</button>
-        <button onclick="nextMusic()">⏭️ Next</button>
-
+    <div class="card">
+        🐾 Hatch Animals
         <br><br>
+        <button onclick="claimQuest('hatch')">
+            🎁 Claim 100 Gems
+        </button>
+    </div>
 
-        <label>Volume</label>
-        <input id="volume" type="range" min="0" max="1" step=".01" value=".5"
-               oninput="audioVolume(this.value)">
-      </div>
-    </section>
+</section>
 
-    <!-- SETTINGS -->
-    <section id="settings" class="page">
-      <h1>⚙️ Settings</h1>
+<!-- SHOP -->
+<section id="shop" class="page">
 
-      <div class="card">
-        <button onclick="saveGame()">💾 Save Game</button>
-        <button onclick="logout()">🚪 Logout</button>
-      </div>
-    </section>
+    <h1>🛒 Shop</h1>
 
-    <!-- OWNER -->
-    <section id="owner" class="page">
-      <h1>👑 Owner Panel</h1>
+    <div class="grid">
 
-      <div class="card ownerBox">
-        <h2>👑 Owner Controls</h2>
-        <p>Logged in as <b id="ownerName"></b></p>
-
-        <div class="ownerTabs">
-          <button onclick="ownerTab('players')">👤 Player Manager</button>
-          <button onclick="ownerTab('animals')">🐾 Animal Manager</button>
-          <button onclick="ownerTab('eggs')">🥚 Egg Manager</button>
-          <button onclick="ownerTab('conveyor')">🏭 Conveyor</button>
-          <button onclick="ownerTab('worlds')">🌎 Worlds</button>
-          <button onclick="ownerTab('events')">🎉 Events</button>
-          <button onclick="ownerTab('mutations')">🧬 Mutations</button>
-          <button onclick="ownerTab('seasons')">🎪 Seasons</button>
-          <button onclick="ownerTab('economy')">💰 Economy</button>
-          <button onclick="ownerTab('announcements')">📢 Broadcast</button>
-          <button onclick="ownerTab('music')">🎵 Music</button>
-          <button onclick="ownerTab('fusion')">🔥 Fusion</button>
-          <button onclick="ownerTab('invisible')">👻 Invisible Eggs</button>
-          <button onclick="ownerTab('trading')">🔄 Trading</button>
-          <button onclick="ownerTab('lucky')">🎁 Lucky Blocks</button>
-          <button onclick="ownerTab('skins')">🎨 Egg Skins</button>
-          <button onclick="ownerTab('server')">🖥️ Server</button>
-          <button onclick="ownerTab('settings')">⚙️ Game Settings</button>
-          <button onclick="ownerTab('logs')">📜 Activity Log</button>
+        <div class="card">
+            <h2>💰 Coins</h2>
+            <button onclick="buyCoins()">
+                50 Gems → 1,000 Coins
+            </button>
         </div>
 
-        <!-- PLAYERS -->
-        <div id="owner-players" class="ownerSection">
-          <h2>👤 Player Manager</h2>
-
-          <div class="toolGrid">
-            <div class="tool">
-              <h3>Give Coins</h3>
-              <input id="giveCoinsName" placeholder="Username">
-              <input id="giveCoinsAmount" type="number" placeholder="Amount">
-              <button onclick="ownerGiveCoins()">Give Coins</button>
-            </div>
-
-            <div class="tool">
-              <h3>Remove Coins</h3>
-              <input id="removeCoinsName" placeholder="Username">
-              <input id="removeCoinsAmount" type="number" placeholder="Amount">
-              <button onclick="ownerRemoveCoins()">Remove Coins</button>
-            </div>
-
-            <div class="tool">
-              <h3>Give Gems</h3>
-              <input id="giveGemsName" placeholder="Username">
-              <input id="giveGemsAmount" type="number" placeholder="Amount">
-              <button onclick="ownerGiveGems()">Give Gems</button>
-            </div>
-
-            <div class="tool">
-              <h3>Player Stats</h3>
-              <input id="statsName" placeholder="Username">
-              <button onclick="viewPlayerStats()">View Stats</button>
-              <div id="statsOutput"></div>
-            </div>
-
-            <div class="tool">
-              <h3>Kick</h3>
-              <input id="kickName" placeholder="Username">
-              <button onclick="ownerKick()">Kick</button>
-            </div>
-
-            <div class="tool">
-              <h3>Freeze</h3>
-              <input id="freezeName" placeholder="Username">
-              <button onclick="ownerFreeze()">Freeze</button>
-            </div>
-          </div>
+        <div class="card">
+            <h2>💎 Gems</h2>
+            <button onclick="buyGems()">
+                500 Coins → 500 Gems
+            </button>
         </div>
 
-        <!-- ANIMALS -->
-        <div id="owner-animals" class="ownerSection">
-          <h2>🐾 Animal Manager</h2>
+    </div>
 
-          <div class="toolGrid">
-            <div class="tool">
-              <h3>Create / Give Animal</h3>
-              <input id="customAnimalName" placeholder="Animal Name">
-              <select id="customRarity">
-                <option>Common</option>
-                <option>Uncommon</option>
-                <option>Rare</option>
-                <option>Epic</option>
-                <option>Legendary</option>
-                <option>Mythic</option>
-                <option>Divine</option>
-                <option>Cosmic</option>
-                <option>Celestial</option>
-                <option>Galactic</option>
-                <option>Secret</option>
-                <option>Unknown</option>
-                <option>Infinite</option>
-                <option>Royal</option>
-                <option>Supreme</option>
-                <option>Cursed</option>
-                <option>Phantom</option>
-                <option>Blood</option>
-                <option>Astral</option>
-                <option>Radiant</option>
-                <option>Beast</option>
-                <option>Dragon</option>
-                <option>Ancient</option>
-                <option>Universal</option>
-                <option>Eternal</option>
-                <option>Transcendent</option>
-                <option>Void</option>
-                <option>Ultimate</option>
-                <option>Godly</option>
-                <option>Omniversal</option>
-              </select>
-              <select id="customMutation">
-                <option>Normal</option>
-                <option>Gold</option>
-                <option>Diamond</option>
-                <option>Rainbow</option>
-                <option>Shadow</option>
-                <option>Neon</option>
-                <option>Galaxy</option>
-                <option>Frozen</option>
-                <option>Lava</option>
-                <option>Toxic</option>
-                <option>Cyber</option>
-                <option>Void</option>
-                <option>Crystal</option>
-                <option>Prismatic</option>
-                <option>Dark Matter</option>
-                <option>Glitched</option>
-                <option>Corrupted</option>
-                <option>Cosmic</option>
-                <option>Infinite</option>
-                <option>Admin</option>
-              </select>
-              <button onclick="createAnimal()">Create Animal</button>
-            </div>
-          </div>
+</section>
+
+<!-- MUSIC -->
+<section id="music" class="page">
+
+    <h1>🎵 Music</h1>
+
+    <div class="card">
+
+        <h2 id="musicTitle">
+            🎵 Collect an Egg Radio
+        </h2>
+
+        <button onclick="toggleMusic()">▶️ / ⏸️</button>
+        <button onclick="nextMusic()">⏭️ NEXT</button>
+
+        <input
+            id="musicVolume"
+            type="range"
+            min="0"
+            max="100"
+            value="50">
+
+        <p>
+            Volume:
+            <span id="volText">50%</span>
+        </p>
+
+    </div>
+
+</section>
+
+<!-- SETTINGS -->
+<section id="settings" class="page">
+
+    <h1>⚙️ Settings</h1>
+
+    <div class="card">
+        <button onclick="logout()">🚪 LOGOUT</button>
+    </div>
+
+</section>
+
+<!-- ADMIN PANEL -->
+<section id="admin" class="page">
+
+    <h1>🛡️ Admin Panel</h1>
+
+    <div class="panel adminPanel">
+
+        <h2>🛡️ Admin Tools</h2>
+
+        <select id="adminPlayer"></select>
+
+        <div class="grid">
+
+            <button onclick="adminAction('coins')">
+                💰 Give Coins
+            </button>
+
+            <button onclick="adminAction('gems')">
+                💎 Give Gems
+            </button>
+
+            <button onclick="adminAction('egg')">
+                🥚 Give Egg
+            </button>
+
+            <button onclick="adminAction('animal')">
+                🐾 Give Animal
+            </button>
+
+            <button onclick="adminAction('kick')">
+                👢 Kick
+            </button>
+
+            <button onclick="adminAction('freeze')">
+                🧊 Freeze
+            </button>
+
         </div>
 
-        <!-- EGGS -->
-        <div id="owner-eggs" class="ownerSection">
-          <h2>🥚 Egg Manager</h2>
+    </div>
 
-          <div class="toolGrid">
-            <div class="tool">
-              <h3>Spawn Normal Egg</h3>
-              <input id="spawnEggName" placeholder="Egg Name">
-              <button onclick="ownerSpawnEgg()">Spawn Egg</button>
-            </div>
+</section>
 
-            <div class="tool">
-              <h3>👑 Admin Egg</h3>
-              <p>Never naturally spawns.</p>
-              <button onclick="spawnAdminEgg()">Spawn Admin Egg</button>
-            </div>
+<!-- OWNER PANEL -->
+<section id="owner" class="page">
 
-            <div class="tool">
-              <h3>👻 Invisible Egg</h3>
-              <input id="invisibleEggName" placeholder="Invisible Egg Name">
-              <button onclick="spawnInvisibleEgg()">Create Invisible Egg</button>
-            </div>
-          </div>
-        </div>
+<h1>👑 Owner Panel</h1>
 
-        <!-- CONVEYOR -->
-        <div id="owner-conveyor" class="ownerSection">
-          <h2>🏭 Conveyor Manager</h2>
+<!-- PLAYER MANAGER -->
+<div class="panel ownerPanel">
 
-          <div class="toolGrid">
-            <div class="tool">
-              <h3>Conveyor Speed</h3>
-              <input id="conveyorSpeed" type="number" value="8">
-              <button onclick="setConveyorSpeed()">Set Speed</button>
-            </div>
+    <h2>👤 Player Manager</h2>
 
-            <div class="tool">
-              <h3>Controls</h3>
-              <button onclick="startConveyor()">▶️ Start</button>
-              <button onclick="stopConveyor()">⏹️ Stop</button>
-              <button onclick="clearConveyor()">🗑️ Clear</button>
-            </div>
-          </div>
-        </div>
+    <select id="ownerPlayer"
+            onchange="selectOwnerPlayer()"></select>
 
-        <!-- WORLDS -->
-        <div id="owner-worlds" class="ownerSection">
-          <h2>🌎 World Manager</h2>
+    <div id="selectedPlayerInfo"></div>
 
-          <div class="tool">
-            <h3>Unlock / Lock World</h3>
+    <div class="grid">
 
-            <select id="worldSelect"></select>
+        <button onclick="ownerAction('giveAdmin')">
+            🛡️ Give Admin
+        </button>
 
-            <button onclick="unlockSelectedWorld()">🔓 Unlock World</button>
-            <button onclick="lockSelectedWorld()">🔒 Lock World</button>
-          </div>
-        </div>
+        <button onclick="ownerAction('removeAdmin')">
+            ❌ Remove Admin
+        </button>
 
-        <!-- EVENTS -->
-        <div id="owner-events" class="ownerSection">
-          <h2>🎉 Event Manager</h2>
+        <button onclick="ownerAction('giveOwner')">
+            👑 Give Owner
+        </button>
 
-          <div class="toolGrid">
-            <button onclick="runEvent('🌈 Rainbow Screen')">🌈 Rainbow Screen</button>
-            <button onclick="runEvent('🎪 Carnival Takeover')">🎪 Carnival Takeover</button>
-            <button onclick="runEvent('☄️ Meteor Shower')">☄️ Meteor Shower</button>
-            <button onclick="runEvent('🥚 Eggpocalypse')">🥚 Eggpocalypse</button>
-            <button onclick="runEvent('🌈 Rainbow Rift')">🌈 Rainbow Rift</button>
-            <button onclick="runEvent('🕳️ Void Rift')">🕳️ Void Rift</button>
-            <button onclick="runEvent('🧬 Mutation Mayhem')">🧬 Mutation Mayhem</button>
-            <button onclick="runEvent('🎰 Jackpot')">🎰 Jackpot</button>
-            <button onclick="runEvent('🌑 Blood Moon')">🌑 Blood Moon</button>
-            <button onclick="runEvent('🐉 Dragon Storm')">🐉 Dragon Storm</button>
-            <button onclick="runEvent('💥 Factory Meltdown')">💥 Factory Meltdown</button>
-            <button onclick="runEvent('🌌 Galaxy Collapse')">🌌 Galaxy Collapse</button>
-            <button onclick="runEvent('🌎 Universal Shift')">🌎 Universal Shift</button>
-            <button onclick="runEvent('👑 Godly Invasion')">👑 Godly Invasion</button>
-            <button onclick="runEvent('♾️ Omniversal Rift')">♾️ Omniversal Rift</button>
-          </div>
-        </div>
+        <button onclick="ownerAction('removeOwner')">
+            ❌ Remove Owner
+        </button>
 
-        <!-- MUTATIONS -->
-        <div id="owner-mutations" class="ownerSection">
-          <h2>🧬 Mutation Manager</h2>
-          <div class="tool">
-            <p>
-              Normal • Gold • Diamond • Rainbow • Shadow • Neon • Galaxy •
-              Frozen • Lava • Toxic • Cyber • Void • Crystal • Prismatic •
-              Dark Matter • Glitched • Corrupted • Cosmic • Infinite • Admin
-            </p>
-          </div>
-        </div>
+        <button onclick="ownerAction('coins')">
+            💰 Give Coins
+        </button>
 
-        <!-- SEASONS -->
-        <div id="owner-seasons" class="ownerSection">
-          <h2>🎪 Season Manager</h2>
-          <div class="toolGrid">
-            <button onclick="activateSeason('Carnival Season')">🎪 Carnival Season</button>
-            <button onclick="activateSeason('Halloween Season')">🎃 Halloween Season</button>
-            <button onclick="activateSeason('Winter Season')">❄️ Winter Season</button>
-            <button onclick="activateSeason('Summer Season')">☀️ Summer Season</button>
-          </div>
-        </div>
+        <button onclick="ownerAction('removeCoins')">
+            💸 Remove Coins
+        </button>
 
-        <!-- ECONOMY -->
-        <div id="owner-economy" class="ownerSection">
-          <h2>💰 Economy Manager</h2>
+        <button onclick="ownerAction('gems')">
+            💎 Give Gems
+        </button>
 
-          <div class="tool">
-            <input id="economyCoins" type="number" placeholder="Coins">
-            <button onclick="economyGive()">Give Coins To Yourself</button>
-          </div>
-        </div>
+        <button onclick="ownerAction('removeGems')">
+            💸 Remove Gems
+        </button>
 
-        <!-- ANNOUNCEMENTS -->
-        <div id="owner-announcements" class="ownerSection">
-          <h2>📢 Broadcast Manager</h2>
+        <button onclick="ownerAction('egg')">
+            🥚 Give Egg
+        </button>
 
-          <div class="tool">
-            <input id="announcementText" placeholder="Announcement text">
-            <button onclick="broadcast()">📢 Send Announcement</button>
-          </div>
-        </div>
+        <button onclick="ownerAction('animal')">
+            🐾 Give Animal
+        </button>
 
-        <!-- MUSIC -->
-        <div id="owner-music" class="ownerSection">
-          <h2>🎵 Music Manager</h2>
+        <button onclick="ownerAction('kick')">
+            👢 Kick
+        </button>
 
-          <div class="tool">
-            <input id="musicTitle" placeholder="Music title">
-            <button onclick="changeMusic()">Set Music</button>
-          </div>
-        </div>
+        <button onclick="ownerAction('freeze')">
+            🧊 Freeze
+        </button>
 
-        <!-- FUSION -->
-        <div id="owner-fusion" class="ownerSection">
-          <h2>🔥 Fusion Manager</h2>
-          <div class="tool">
-            <input id="ownerFusionTime" type="number" value="10">
-            <button onclick="setFusionTime()">Set Default Fusion Time</button>
-          </div>
-        </div>
+        <button onclick="ownerAction('reset')">
+            ♻️ Reset
+        </button>
 
-        <!-- INVISIBLE -->
-        <div id="owner-invisible" class="ownerSection">
-          <h2>👻 Invisible Egg Manager</h2>
+    </div>
 
-          <div class="tool">
-            <input id="searchPet" placeholder="Pet searching">
-            <input id="hiddenEggName" placeholder="Hidden Egg">
-            <button onclick="petSearchInvisible()">🐾 Send Pet Searching</button>
-          </div>
-        </div>
-
-        <!-- TRADING -->
-        <div id="owner-trading" class="ownerSection">
-          <h2>🔄 Trading Manager</h2>
-          <div class="tool">
-            <button onclick="toggleTrading()">Toggle Trading</button>
-            <p id="tradingState">Trading: ON</p>
-          </div>
-        </div>
-
-        <!-- LUCKY -->
-        <div id="owner-lucky" class="ownerSection">
-          <h2>🎁 Lucky Block Manager</h2>
-
-          <div class="toolGrid">
-            <div class="tool">
-              <h3>Spawn Lucky Block</h3>
-              <input id="luckyName" placeholder="Lucky Block Name">
-              <button onclick="spawnLuckyBlock()">🎁 Spawn Lucky Block</button>
-            </div>
-
-            <div class="tool">
-              <h3>Clear Lucky Blocks</h3>
-              <button onclick="clearLuckyBlocks()">🗑️ Clear Lucky Blocks</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- SKINS -->
-        <div id="owner-skins" class="ownerSection">
-          <h2>🎨 Egg Skin Creator</h2>
-
-          <div class="toolGrid">
-            <div class="tool">
-              <input id="skinName" placeholder="Skin Name">
-              <input id="skinColor1" type="color" value="#ff0000">
-              <input id="skinColor2" type="color" value="#ffff00">
-              <label>
-                <input id="skinGlow" type="checkbox">
-                Glow
-              </label>
-              <button onclick="createSkin()">Create Egg Skin</button>
-            </div>
-
-            <div class="tool">
-              <h3>Built-in Owner Skins</h3>
-              <p id="skinCount"></p>
-            </div>
-          </div>
-        </div>
-
-        <!-- SERVER -->
-        <div id="owner-server" class="ownerSection">
-          <h2>🖥️ Server Manager</h2>
-          <div class="tool">
-            <h3>Maximum Players</h3>
-            <h1>15</h1>
-          </div>
-        </div>
-
-        <!-- SETTINGS -->
-        <div id="owner-settings" class="ownerSection">
-          <h2>⚙️ Game Settings</h2>
-          <div class="tool">
-            <button onclick="resetWorlds()">Reset World Unlocks</button>
-            <button onclick="saveGame()">Save Everything</button>
-          </div>
-        </div>
-
-        <!-- LOGS -->
-        <div id="owner-logs" class="ownerSection">
-          <h2>📜 Activity Log</h2>
-          <div id="activityLog" class="card"></div>
-        </div>
-
-      </div>
-    </section>
-
-  </main>
 </div>
 
-<!-- UNLOCK -->
-<div id="unlockAnimation">
-  <div class="unlockBox">
-    <div class="unlockEmoji" id="unlockEmoji">🌎</div>
-    <div class="unlockTitle" id="unlockTitle">WORLD UNLOCKED</div>
-    <div class="unlockBy" id="unlockBy"></div>
-  </div>
+<!-- EGG MANAGER -->
+<div class="panel ownerPanel">
+
+    <h2>🥚 Egg Manager</h2>
+
+    <input id="customEggName"
+           placeholder="Custom Egg Name">
+
+    <input id="customEggColor"
+           type="color"
+           value="#55ccff">
+
+    <input id="customEggPrice"
+           type="number"
+           value="100"
+           placeholder="Price">
+
+    <button onclick="createCustomEgg()">
+        ➕ CREATE CUSTOM EGG
+    </button>
+
+    <hr>
+
+    <button onclick="spawnAdminEgg()">
+        👑 SPAWN ADMIN EGG
+    </button>
+
+    <button onclick="spawnLuckyBlock()">
+        🎁 SPAWN LUCKY BLOCK
+    </button>
+
 </div>
 
-<!-- EVENT FX -->
-<div id="eventFX"></div>
+<!-- WORLD MANAGER -->
+<div class="panel ownerPanel">
+
+    <h2>🌎 World Manager</h2>
+
+    <select id="worldSelect"></select>
+
+    <div class="grid">
+
+        <button onclick="unlockSelectedWorld()">
+            🔓 UNLOCK WORLD
+        </button>
+
+        <button onclick="lockSelectedWorld()">
+            🔒 LOCK WORLD
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ANIMATION MANAGER -->
+<div class="panel ownerPanel">
+
+    <h2>🎬 Animations Manager</h2>
+
+    <p>
+        Test every major game animation.
+    </p>
+
+    <div class="grid">
+
+        <button onclick="playAnimation('eggSpawn')">
+            🥚 Egg Spawn
+        </button>
+
+        <button onclick="playAnimation('conveyor')">
+            ➡️ Conveyor
+        </button>
+
+        <button onclick="playAnimation('hatch')">
+            🥚 Hatch
+        </button>
+
+        <button onclick="playAnimation('rare')">
+            ✨ Rare Hatch
+        </button>
+
+        <button onclick="playAnimation('rainbowHatch')">
+            🌈 Rainbow Hatch
+        </button>
+
+        <button onclick="playAnimation('admin')">
+            👑 Admin Egg
+        </button>
+
+        <button onclick="playAnimation('lucky')">
+            🎁 Lucky Block
+        </button>
+
+        <button onclick="playAnimation('animal')">
+            🐾 Animal Discovery
+        </button>
+
+        <button onclick="playAnimation('invisible')">
+            👻 Invisible Egg
+        </button>
+
+        <button onclick="playAnimation('fusion')">
+            🔥 Fusion
+        </button>
+
+        <button onclick="playAnimation('world')">
+            🌎 World Unlock
+        </button>
+
+        <button onclick="playAnimation('carnival')">
+            🎪 Carnival
+        </button>
+
+        <button onclick="playAnimation('meteor')">
+            ☄️ Meteor Shower
+        </button>
+
+        <button onclick="playAnimation('blood')">
+            🌑 Blood Moon
+        </button>
+
+        <button onclick="playAnimation('rift')">
+            🌈 Rainbow Rift
+        </button>
+
+        <button onclick="playAnimation('void')">
+            🕳️ Void Rift
+        </button>
+
+        <button onclick="playAnimation('godly')">
+            👑 Godly Invasion
+        </button>
+
+        <button onclick="playAnimation('omni')">
+            ♾️ Omniversal Rift
+        </button>
+
+    </div>
+
+</div>
+
+<!-- EVENTS -->
+<div class="panel ownerPanel">
+
+    <h2>🎉 Event Manager</h2>
+
+    <div class="grid">
+
+        <button onclick="eventStart('Rainbow Screen')">
+            🌈 Rainbow Screen
+        </button>
+
+        <button onclick="eventStart('Carnival Takeover')">
+            🎪 Carnival Takeover
+        </button>
+
+        <button onclick="eventStart('Meteor Shower')">
+            ☄️ Meteor Shower
+        </button>
+
+        <button onclick="eventStart('Eggpocalypse')">
+            🥚 Eggpocalypse
+        </button>
+
+        <button onclick="eventStart('Rainbow Rift')">
+            🌈 Rainbow Rift
+        </button>
+
+        <button onclick="eventStart('Void Rift')">
+            🕳️ Void Rift
+        </button>
+
+        <button onclick="eventStart('Mutation Mayhem')">
+            🧬 Mutation Mayhem
+        </button>
+
+        <button onclick="eventStart('Jackpot')">
+            🎰 Jackpot
+        </button>
+
+        <button onclick="eventStart('Blood Moon')">
+            🌑 Blood Moon
+        </button>
+
+        <button onclick="eventStart('Dragon Storm')">
+            🐉 Dragon Storm
+        </button>
+
+        <button onclick="eventStart('Factory Meltdown')">
+            💥 Factory Meltdown
+        </button>
+
+        <button onclick="eventStart('Galaxy Collapse')">
+            🌌 Galaxy Collapse
+        </button>
+
+        <button onclick="eventStart('Universal Shift')">
+            🌎 Universal Shift
+        </button>
+
+        <button onclick="eventStart('Godly Invasion')">
+            👑 Godly Invasion
+        </button>
+
+        <button onclick="eventStart('Omniversal Rift')">
+            ♾️ Omniversal Rift
+        </button>
+
+    </div>
+
+</div>
+
+<!-- POLLS -->
+<div class="panel ownerPanel">
+
+    <h2>🗳️ Poll Manager</h2>
+
+    <input id="pollQuestion"
+           placeholder="Poll question">
+
+    <input id="pollOption1"
+           placeholder="Option 1">
+
+    <input id="pollOption2"
+           placeholder="Option 2">
+
+    <input id="pollOption3"
+           placeholder="Option 3">
+
+    <button onclick="createPoll()">
+        📢 START POLL
+    </button>
+
+    <button onclick="endPoll()">
+        🛑 END POLL
+    </button>
+
+    <div id="pollPreview"></div>
+
+</div>
+
+<!-- COUNTDOWN -->
+<div class="panel ownerPanel">
+
+    <h2>⏰ Countdown Manager</h2>
+
+    <input id="countdownTitle"
+           placeholder="Countdown title">
+
+    <input id="countdownSeconds"
+           type="number"
+           value="60">
+
+    <button onclick="startCountdown()">
+        ▶️ START COUNTDOWN
+    </button>
+
+    <button onclick="stopCountdown()">
+        🛑 STOP COUNTDOWN
+    </button>
+
+    <div id="ownerCountdownPreview"></div>
+
+</div>
+
+<!-- ANNOUNCEMENTS -->
+<div class="panel ownerPanel">
+
+    <h2>📢 Announcement Manager</h2>
+
+    <input id="announcementText"
+           placeholder="Announcement text">
+
+    <button onclick="broadcast()">
+        📢 BROADCAST
+    </button>
+
+</div>
+
+<!-- TRADING -->
+<div class="panel ownerPanel">
+
+    <h2>🔄 Trading Manager</h2>
+
+    <button onclick="toggleTrading()">
+        Enable / Disable Trading
+    </button>
+
+    <p id="tradingStatus"></p>
+
+</div>
+
+<!-- LOG -->
+<div class="panel ownerPanel">
+
+    <h2>📜 Activity Log</h2>
+
+    <div id="activityLog"></div>
+
+</div>
+
+</section>
+
+</main>
+</div>
 
 <script>
-/* =========================================================
-   COLLECT AN EGG
-   SINGLE FILE GAME
-========================================================= */
+
+/* ================================
+   ACCOUNTS
+================================ */
 
 const OWNER_ACCOUNTS={
-  NoobyGraham:{
-    password:"OWNERNOOBMEYER",
-    role:"OWNER"
-  },
-  AttackJack:{
-    password:"ATTACKAMADMIN",
-    role:"OWNER"
-  }
+    NoobyGraham:{
+        password:"OWNERNOOBMEYER",
+        role:"OWNER"
+    },
+    AttackJack:{
+        password:"ATTACKAMADMIN",
+        role:"OWNER"
+    }
 };
 
-const RARITIES=[
- "Common","Uncommon","Rare","Epic","Legendary","Mythic",
- "Divine","Cosmic","Celestial","Galactic","Secret","Unknown",
- "Infinite","Royal","Supreme","Cursed","Phantom","Blood",
- "Astral","Radiant","Beast","Dragon","Ancient","Universal",
- "Eternal","Transcendent","Void","Ultimate","Godly","Omniversal"
-];
-
-const MUTATIONS=[
- "Normal","Gold","Diamond","Rainbow","Shadow","Neon","Galaxy",
- "Frozen","Lava","Toxic","Cyber","Void","Crystal","Prismatic",
- "Dark Matter","Glitched","Corrupted","Cosmic","Infinite","Admin"
-];
-
-const WORLD_NAMES=[
- ["🌱","Grasslands"],
- ["🎪","Carnival World"],
- ["🎃","Halloween World"],
- ["❄️","Frost World"],
- ["🌋","Volcano World"],
- ["🌊","Ocean World"],
- ["🌌","Galaxy World"],
- ["🌑","Void World"],
- ["🏰","Royal World"],
- ["🐉","Dragon World"],
- ["🤖","Cyber World"],
- ["💎","Crystal World"],
- ["☁️","Cloud World"],
- ["🔥","Inferno World"],
- ["🌈","Rainbow World"],
- ["☢️","Radioactive World"],
- ["👻","Haunted World"],
- ["🍭","Candy World"],
- ["🪐","Space World"],
- ["🌴","Tropical World"],
- ["🏜️","Desert World"],
- ["🌲","Forest World"],
- ["🏔️","Mountain World"],
- ["🏙️","City World"],
- ["🏝️","Island World"],
- ["🧪","Laboratory World"],
- ["⚡","Storm World"],
- ["🧊","Ice World"],
- ["🕳️","Abyss World"],
- ["👑","Kingdom World"]
-];
-
-while(WORLD_NAMES.length<100){
-  let n=WORLD_NAMES.length+1;
-  WORLD_NAMES.push(["🌎","World "+n]);
-}
-
-/* Every world gets exactly 3 unique world eggs */
-const worldEggs={};
-
-WORLD_NAMES.forEach((w,i)=>{
-  if(i===0){
-    worldEggs[w[1]]=["Grass Egg","Meadow Egg","Nature Egg"];
-  }else if(w[1]==="Carnival World"){
-    worldEggs[w[1]]=["Carnival Egg","Prize Egg","Jackpot Egg"];
-  }else if(w[1]==="Halloween World"){
-    worldEggs[w[1]]=["Pumpkin Egg","Haunted Egg","Witch Egg"];
-  }else{
-    worldEggs[w[1]]=[
-      w[1].replace(" World","")+" Egg",
-      w[1].replace(" World","")+" Elite Egg",
-      w[1].replace(" World","")+" Secret Egg"
-    ];
-  }
-});
-
-/* 60+ extra eggs */
-const EXTRA_EGGS=[];
-for(let i=1;i<=75;i++){
-  EXTRA_EGGS.push("Extra Egg "+i);
-}
-
-/* Animal starter pool */
-const ANIMAL_POOL=[
- ["Bunny","Common","🐰"],
- ["Duck","Uncommon","🦆"],
- ["Fox","Rare","🦊"],
- ["Wolf","Epic","🐺"],
- ["Tiger","Legendary","🐯"],
- ["Phoenix","Mythic","🔥"],
- ["Dragon","Divine","🐉"],
- ["Galaxy Cat","Cosmic","🐱"],
- ["Celestial Deer","Celestial","🦌"],
- ["Void Beast","Void","👹"],
- ["Godly Dragon","Godly","🐲"],
- ["Omniversal Beast","Omniversal","🌌"]
-];
+/* ================================
+   GAME
+================================ */
 
 let game={
-  username:"",
-  role:"PLAYER",
-  coins:100,
-  gems:100,
-  animals:[],
-  unlockedWorlds:["Grasslands"],
-  invisibleEggs:[],
-  eggsCollected:0,
-  trading:true,
-  conveyorRunning:true,
-  conveyorSpeed:8,
-  musicIndex:0,
-  musicPlaying:false,
-  fusionTime:10,
-  skins:[],
-  logs:[]
+    username:"Guest",
+    role:"PLAYER",
+    coins:100,
+    gems:100,
+    animals:[],
+    eggs:[],
+    worlds:{
+        "Grasslands":true
+    },
+    adminUsers:[],
+    ownerUsers:[
+        "NoobyGraham",
+        "AttackJack"
+    ],
+    onlinePlayers:[
+        "NoobyGraham",
+        "AttackJack",
+        "PlayerOne",
+        "PlayerTwo"
+    ],
+    frozen:[],
+    customEggs:[],
+    quests:{}
 };
 
-let conveyorTimer=null;
+let currentPoll=null;
+let countdownTimer=null;
+let countdownData=null;
+let tradingEnabled=true;
+let logs=[];
 
-/* =========================================================
-   LOGIN
-========================================================= */
+/* ================================
+   RARITIES
+================================ */
 
-function login(){
-  const username=document.getElementById("loginUser").value.trim();
-  const password=document.getElementById("loginPass").value;
+const rarities=[
+    "Common",
+    "Uncommon",
+    "Rare",
+    "Epic",
+    "Legendary",
+    "Mythic",
+    "Divine",
+    "Cosmic",
+    "Celestial",
+    "Galactic",
+    "Secret",
+    "Unknown",
+    "Infinite",
+    "Royal",
+    "Supreme",
+    "Cursed",
+    "Phantom",
+    "Blood",
+    "Astral",
+    "Radiant",
+    "Beast",
+    "Dragon",
+    "Ancient",
+    "Universal",
+    "Eternal",
+    "Transcendent",
+    "Void",
+    "Ultimate",
+    "Godly",
+    "Omniversal"
+];
 
-  if(!username){
-    document.getElementById("loginMsg").textContent="Enter a username!";
-    return;
-  }
+/* ================================
+   WORLDS
+================================ */
 
-  const owner=OWNER_ACCOUNTS[username];
+const worldNames=[
+    "Grasslands",
+    "Carnival World",
+    "Halloween World",
+    "Candy World",
+    "Cyber World",
+    "Winter World",
+    "Ocean World",
+    "Volcano World",
+    "Space World",
+    "Galaxy World",
+    "Rainbow World",
+    "Desert World",
+    "Jungle World",
+    "Crystal World",
+    "Toy World",
+    "Castle World",
+    "Dragon World",
+    "Sky World",
+    "Lava World",
+    "Frozen World",
+    "Neon World",
+    "Ancient World",
+    "Void World",
+    "Robot World",
+    "Pirate World",
+    "Farm World",
+    "Magic World",
+    "Moon World",
+    "Star World",
+    "Blood Moon World"
+];
 
-  if(owner && owner.password!==password){
-    document.getElementById("loginMsg").textContent="Wrong owner password!";
-    return;
-  }
-
-  game.username=username;
-  game.role=owner ? "OWNER":"PLAYER";
-
-  loadGame();
-
-  document.getElementById("login").style.display="none";
-  document.getElementById("app").style.display="block";
-
-  document.getElementById("welcome").textContent="👋 "+username;
-  document.getElementById("ownerName").textContent=username;
-
-  if(game.role==="OWNER"){
-    document.getElementById("ownerNav").style.display="flex";
-  }
-
-  renderAll();
-  startConveyor();
-  announce(username+": Welcome to Collect an Egg!");
+while(worldNames.length<100){
+    worldNames.push("World "+(worldNames.length+1));
 }
 
-function logout(){
-  saveGame();
-  location.reload();
-}
+const worldEggs={};
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
+worldNames.forEach(world=>{
 
-document.querySelectorAll(".nav").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    const page=btn.dataset.page;
+    if(world==="Grasslands"){
+        worldEggs[world]=[
+            "Grass Egg",
+            "Forest Egg",
+            "Meadow Egg"
+        ];
+    }
+    else if(world==="Carnival World"){
+        worldEggs[world]=[
+            "Carnival Egg",
+            "Prize Egg",
+            "Jackpot Egg"
+        ];
+    }
+    else if(world==="Halloween World"){
+        worldEggs[world]=[
+            "Pumpkin Egg",
+            "Haunted Egg",
+            "Witch Egg"
+        ];
+    }
+    else{
+        worldEggs[world]=[
+            world+" Egg",
+            world+" Treasure Egg",
+            world+" Mystery Egg"
+        ];
+    }
 
-    if(page==="owner" && game.role!=="OWNER") return;
-
-    document.querySelectorAll(".page").forEach(p=>{
-      p.classList.remove("active");
-    });
-
-    document.getElementById(page).classList.add("active");
-
-    document.querySelectorAll(".nav").forEach(n=>{
-      n.classList.remove("active");
-    });
-
-    btn.classList.add("active");
-  });
 });
 
-/* =========================================================
-   SAVE / LOAD
-========================================================= */
+/* ================================
+   OLD EGGS
+================================ */
 
-function saveGame(){
-  localStorage.setItem(
-    "COLLECT_AN_EGG_SAVE_"+game.username,
-    JSON.stringify(game)
-  );
-  logAction("Game saved");
+const eggs=[
+    ["Basic Egg",100,"#ffffff"],
+    ["Wood Egg",250,"#8b5a2b"],
+    ["Stone Egg",500,"#777777"],
+    ["Leaf Egg",800,"#35b64d"],
+    ["Water Egg",1200,"#28aaff"],
+    ["Fire Egg",2000,"#ff4a22"],
+    ["Ice Egg",3000,"#8ceaff"],
+    ["Gold Egg",5000,"#ffd43b"],
+    ["Diamond Egg",8000,"#55eaff"],
+    ["Galaxy Egg",15000,"#714cff"],
+    ["Rainbow Egg",25000,"#ff55d8"],
+    ["Secret Egg",50000,"#101010"],
+    ["Void Egg",100000,"#08000d"],
+    ["Godly Egg",250000,"#ffb700"],
+    ["Omniversal Egg",1000000,"#ff00ff"]
+];
+
+for(let i=1;i<=75;i++){
+    eggs.push([
+        "Mystery Egg "+i,
+        100+i*150,
+        ["#55aaff","#55ff77","#d66cff","#ffd43b","#ff5577"][i%5]
+    ]);
 }
 
-function loadGame(){
-  const raw=localStorage.getItem(
-    "COLLECT_AN_EGG_SAVE_"+game.username
-  );
+/* ================================
+   ANIMALS
+================================ */
 
-  if(!raw)return;
+const animalNames=[
+    "Fluffy Bunny",
+    "Tiny Chick",
+    "Happy Dog",
+    "Baby Cat",
+    "Forest Fox",
+    "Blue Penguin",
+    "Golden Monkey",
+    "Magic Deer",
+    "Fire Wolf",
+    "Ice Dragon",
+    "Rainbow Tiger",
+    "Galaxy Whale",
+    "Shadow Panther",
+    "Crystal Phoenix",
+    "Void Serpent",
+    "Ancient Griffin",
+    "Cosmic Lion",
+    "Godly Dragon",
+    "Omniversal Beast"
+];
 
-  try{
-    const saved=JSON.parse(raw);
-    game={...game,...saved};
-  }catch(e){}
-}
+function randomAnimal(){
 
-/* =========================================================
-   RENDER
-========================================================= */
-
-function renderAll(){
-  document.getElementById("coins").textContent=game.coins;
-  document.getElementById("gems").textContent=game.gems;
-
-  document.getElementById("homeCoins").textContent=game.coins;
-  document.getElementById("homeGems").textContent=game.gems;
-  document.getElementById("animalCount").textContent=game.animals.length;
-
-  renderAnimals();
-  renderWorlds();
-  renderWorldSelect();
-  renderFusion();
-  renderTradingAnimals();
-
-  document.getElementById("skinCount").textContent=
-    "1,200+ built-in Owner Egg Skins";
-
-  renderLogs();
-}
-
-/* =========================================================
-   ANNOUNCEMENTS
-========================================================= */
-
-function announce(text){
-  const box=document.createElement("div");
-  box.className="notice";
-  box.textContent=text;
-
-  document.getElementById("announcements").appendChild(box);
-
-  setTimeout(()=>{
-    box.remove();
-  },5000);
-
-  logAction("Announcement: "+text);
-}
-
-/* =========================================================
-   WORLD SYSTEM
-========================================================= */
-
-function renderWorlds(){
-  const grid=document.getElementById("worldGrid");
-  grid.innerHTML="";
-
-  WORLD_NAMES.forEach((world,i)=>{
-    const name=world[1];
-
-    if(!game.unlockedWorlds.includes(name)) return;
-
-    const div=document.createElement("div");
-    div.className="world unlocked";
-
-    div.innerHTML=`
-      <div class="worldEmoji">${world[0]}</div>
-      <div class="worldName">${name}</div>
-      <div class="worldEggs">
-        🥚 ${worldEggs[name].join(" • ")}
-      </div>
-    `;
-
-    div.onclick=()=>{
-      game.currentWorld=name;
-      document.getElementById("currentWorld").textContent=name;
-      announce(game.username+" entered "+name);
+    return{
+        id:Date.now()+Math.random(),
+        name:animalNames[
+            Math.floor(Math.random()*animalNames.length)
+        ],
+        rarity:rarities[
+            Math.floor(Math.random()*rarities.length)
+        ],
+        mutation:"Normal"
     };
 
-    grid.appendChild(div);
-  });
 }
 
-function renderWorldSelect(){
-  const select=document.getElementById("worldSelect");
-  if(!select)return;
+/* ================================
+   LOGIN
+================================ */
 
-  select.innerHTML="";
+function login(){
 
-  WORLD_NAMES.forEach((world,i)=>{
-    if(i===0)return;
+    const name=document.getElementById("loginName").value.trim();
+    const password=document.getElementById("loginPassword").value;
 
-    const option=document.createElement("option");
-    option.value=world[1];
-    option.textContent=world[0]+" "+world[1];
+    if(OWNER_ACCOUNTS[name] &&
+       OWNER_ACCOUNTS[name].password===password){
 
-    select.appendChild(option);
-  });
+        startGame(name,"OWNER");
+        return;
+    }
+
+    if(!name){
+        toast("Enter a username!");
+        return;
+    }
+
+    let role="PLAYER";
+
+    if(game.ownerUsers.includes(name)){
+        role="OWNER";
+    }
+    else if(game.adminUsers.includes(name)){
+        role="ADMIN";
+    }
+
+    startGame(name,role);
 }
+
+function guestLogin(){
+
+    startGame(
+        "Guest"+Math.floor(Math.random()*99999),
+        "PLAYER"
+    );
+
+}
+
+function startGame(name,role){
+
+    game.username=name;
+    game.role=role;
+
+    if(!game.onlinePlayers.includes(name)){
+        game.onlinePlayers.push(name);
+    }
+
+    document.getElementById("login").style.display="none";
+    document.getElementById("app").style.display="block";
+
+    if(role==="OWNER"){
+        document.getElementById("ownerNav")
+            .classList.remove("hidden");
+
+        document.getElementById("adminNav")
+            .classList.remove("hidden");
+    }
+
+    if(role==="ADMIN"){
+        document.getElementById("adminNav")
+            .classList.remove("hidden");
+    }
+
+    document.getElementById("usernameDisplay")
+        .textContent=name;
+
+    document.getElementById("roleDisplay")
+        .textContent=
+        role==="OWNER"
+        ?" 👑 OWNER"
+        :role==="ADMIN"
+        ?" 🛡️ ADMIN"
+        :"";
+
+    loadSave();
+    updateAll();
+
+    announce("WELCOME "+name+"!");
+
+}
+
+/* ================================
+   SAVE
+================================ */
+
+function save(){
+
+    localStorage.setItem(
+        "COLLECT_AN_EGG_SAVE",
+        JSON.stringify(game)
+    );
+
+}
+
+function loadSave(){
+
+    const saved=
+        localStorage.getItem("COLLECT_AN_EGG_SAVE");
+
+    if(!saved)return;
+
+    try{
+
+        const data=JSON.parse(saved);
+
+        game.coins=data.coins??100;
+        game.gems=data.gems??100;
+        game.animals=data.animals??[];
+        game.eggs=data.eggs??[];
+        game.worlds=data.worlds??{"Grasslands":true};
+        game.adminUsers=data.adminUsers??[];
+        game.ownerUsers=data.ownerUsers??
+            ["NoobyGraham","AttackJack"];
+        game.frozen=data.frozen??[];
+        game.customEggs=data.customEggs??[];
+        game.quests=data.quests??{};
+
+    }catch(e){}
+
+}
+
+/* ================================
+   PAGE
+================================ */
+
+function page(id){
+
+    document.querySelectorAll(".page")
+        .forEach(p=>p.classList.remove("active"));
+
+    document.getElementById(id)
+        .classList.add("active");
+
+    updateAll();
+}
+
+/* ================================
+   UPDATE
+================================ */
+
+function updateAll(){
+
+    document.getElementById("coins")
+        .textContent=game.coins;
+
+    document.getElementById("gems")
+        .textContent=game.gems;
+
+    document.getElementById("homeCoins")
+        .textContent=game.coins;
+
+    document.getElementById("homeGems")
+        .textContent=game.gems;
+
+    document.getElementById("animalCount")
+        .textContent=game.animals.length;
+
+    document.getElementById("worldCount")
+        .textContent=
+        Object.values(game.worlds)
+        .filter(Boolean).length;
+
+    renderEggShop();
+    renderAnimals();
+    renderWorlds();
+    renderPlayers();
+    renderFusion();
+    renderTrading();
+    renderPoll();
+    renderCountdown();
+    renderLogs();
+
+    save();
+
+}
+
+/* ================================
+   EGG SHOP
+================================ */
+
+function allEggs(){
+
+    return [
+        ...eggs,
+        ...game.customEggs.map(e=>[
+            e.name,
+            e.price,
+            e.color
+        ])
+    ];
+
+}
+
+function renderEggShop(){
+
+    const box=document.getElementById("eggShop");
+
+    if(!box)return;
+
+    box.innerHTML=
+        allEggs().map((egg,i)=>`
+
+        <div class="eggCard"
+             style="border-color:${egg[2]}">
+
+            <div class="eggVisual"
+                 style="
+                    background:${egg[2]};
+                    color:${egg[2]}
+                 ">
+                🥚
+            </div>
+
+            <h3 style="color:${egg[2]}">
+                ${egg[0]}
+            </h3>
+
+            <p>💰 ${egg[1].toLocaleString()}</p>
+
+            <button onclick="buyEgg(${i})">
+                BUY
+            </button>
+
+        </div>
+
+    `).join("");
+
+}
+
+function buyEgg(index){
+
+    const egg=allEggs()[index];
+
+    if(game.coins<egg[1]){
+        toast("❌ Not enough coins!");
+        return;
+    }
+
+    game.coins-=egg[1];
+
+    spawnConveyorEgg({
+        name:egg[0],
+        color:egg[2],
+        type:"normal"
+    });
+
+    playAnimation("eggSpawn");
+
+    toast("🥚 Bought "+egg[0]);
+
+    updateAll();
+
+}
+
+/* ================================
+   CONVEYOR
+================================ */
+
+function spawnConveyorEgg(data){
+
+    const belt=
+        document.getElementById("eggBelt");
+
+    const egg=document.createElement("div");
+
+    egg.className="egg";
+
+    egg.style.left="-90px";
+
+    egg.style.background=
+        data.type==="admin"
+        ?"linear-gradient(#ff2222,#8b0000)"
+        :data.type==="lucky"
+        ?"linear-gradient(135deg,#ffd43b,#ff4d00,#ff36d7)"
+        :data.color;
+
+    egg.style.borderColor=
+        data.type==="admin"
+        ?"gold"
+        :"white";
+
+    egg.innerHTML=
+        data.type==="admin"
+        ?"👑"
+        :data.type==="lucky"
+        ?"🎁"
+        :"🥚";
+
+    const name=document.createElement("div");
+
+    name.className="eggName";
+
+    name.textContent=data.name;
+
+    egg.appendChild(name);
+
+    belt.appendChild(egg);
+
+    let x=-90;
+
+    const speed=2.5;
+
+    const movement=setInterval(()=>{
+
+        x+=speed;
+
+        egg.style.left=x+"px";
+
+        if(x>window.innerWidth-250){
+
+            clearInterval(movement);
+
+            egg.remove();
+
+            hatchEgg(data);
+
+        }
+
+    },30);
+
+}
+
+function hatchEgg(data){
+
+    playAnimation(
+        data.type==="admin"
+        ?"admin"
+        :data.type==="lucky"
+        ?"lucky"
+        :"hatch"
+    );
+
+    const animal=randomAnimal();
+
+    if(data.type==="admin"){
+        animal.mutation="Admin";
+    }
+
+    if(data.type==="lucky"){
+        animal.mutation=
+            ["Gold","Diamond","Rainbow","Galaxy"]
+            [Math.floor(Math.random()*4)];
+    }
+
+    game.animals.push(animal);
+
+    announce(
+        game.username+
+        " hatched "+
+        animal.name+
+        " ["+
+        animal.rarity+
+        "]"
+    );
+
+    updateAll();
+
+}
+
+/* ================================
+   ADMIN EGG
+================================ */
+
+function spawnAdminEgg(){
+
+    if(game.role!=="OWNER"){
+        toast("❌ OWNER ONLY");
+        return;
+    }
+
+    spawnConveyorEgg({
+        name:"Admin Egg",
+        color:"#ff2222",
+        type:"admin"
+    });
+
+    announce(
+        game.username+
+        " has spawned Admin Egg"
+    );
+
+    addLog(
+        game.username+
+        " spawned Admin Egg"
+    );
+
+}
+
+/* ================================
+   LUCKY BLOCK
+================================ */
+
+function spawnLuckyBlock(){
+
+    if(game.role!=="OWNER"){
+        toast("❌ OWNER ONLY");
+        return;
+    }
+
+    spawnConveyorEgg({
+        name:"Lucky Block",
+        color:"#ffd43b",
+        type:"lucky"
+    });
+
+    announce(
+        game.username+
+        " has spawned Lucky Block"
+    );
+
+}
+
+/* ================================
+   ANIMALS
+================================ */
+
+function renderAnimals(){
+
+    const box=document.getElementById("animalsList");
+
+    if(!game.animals.length){
+
+        box.innerHTML=`
+        <div class="card">
+            🐾 You have 0 animals.
+        </div>`;
+
+        return;
+    }
+
+    box.innerHTML=
+        game.animals.map((animal,i)=>`
+
+        <div class="animalRow">
+
+            <div>
+                🐾 <b>${animal.name}</b>
+
+                <span class="rarity rarity-${animal.rarity}">
+                    ${animal.rarity}
+                </span>
+
+                <small>
+                    ✨ ${animal.mutation}
+                </small>
+            </div>
+
+            <button onclick="removeAnimal(${i})">
+                🗑️
+            </button>
+
+        </div>
+
+    `).join("");
+
+}
+
+function removeAnimal(i){
+
+    game.animals.splice(i,1);
+
+    updateAll();
+
+}
+
+/* ================================
+   WORLDS
+================================ */
+
+const worldIcons=[
+    "🌿","🎪","🎃","🍬","🤖",
+    "❄️","🌊","🌋","🚀","🌌",
+    "🌈","🏜️","🌴","💎","🧸",
+    "🏰","🐉","☁️","🔥","🧊",
+    "💡","🏺","🕳️","🤖","🏴‍☠️"
+];
+
+function renderWorlds(){
+
+    const box=document.getElementById("worldList");
+
+    box.innerHTML=
+        worldNames.map((world,i)=>{
+
+            if(!game.worlds[world] &&
+               world!=="Grasslands"){
+
+                return "";
+            }
+
+            return`
+
+            <div class="card">
+
+                <div style="font-size:60px">
+                    ${worldIcons[i%worldIcons.length]}
+                </div>
+
+                <h2>${world}</h2>
+
+                <p>
+                    🥚 ${worldEggs[world].join(" • ")}
+                </p>
+
+                <button onclick="enterWorld('${world}')">
+                    ENTER
+                </button>
+
+            </div>
+
+            `;
+
+        }).join("");
+
+}
+
+function enterWorld(world){
+
+    playAnimation("world");
+
+    announce(
+        "🌎 Welcome to "+world+"!"
+    );
+
+}
+
+/* ================================
+   WORLD UNLOCK
+================================ */
 
 function unlockSelectedWorld(){
-  if(game.role!=="OWNER")return;
 
-  const name=document.getElementById("worldSelect").value;
-  unlockWorld(name);
+    if(game.role!=="OWNER"){
+        toast("❌ OWNER ONLY");
+        return;
+    }
+
+    const world=
+        document.getElementById("worldSelect").value;
+
+    if(world==="Grasslands"){
+        toast("🌿 Grasslands is always unlocked.");
+        return;
+    }
+
+    game.worlds[world]=true;
+
+    /* BIG WORLD UNLOCK ANIMATION */
+    playWorldUnlockAnimation(world);
+
+    /* EXACT ANNOUNCEMENT */
+    announce(
+        world+
+        " has been unlocked by "+
+        game.username
+    );
+
+    addLog(
+        game.username+
+        " unlocked "+
+        world
+    );
+
+    updateAll();
+
 }
 
 function lockSelectedWorld(){
-  if(game.role!=="OWNER")return;
 
-  const name=document.getElementById("worldSelect").value;
-
-  if(name==="Grasslands"){
-    announce("Grasslands cannot be locked.");
-    return;
-  }
-
-  game.unlockedWorlds=game.unlockedWorlds.filter(w=>w!==name);
-
-  announce(name+" has been locked by "+game.username);
-
-  renderWorlds();
-  saveGame();
-}
-
-function unlockWorld(name){
-  if(game.role!=="OWNER")return;
-
-  if(game.unlockedWorlds.includes(name)){
-    announce(name+" is already unlocked.");
-    return;
-  }
-
-  game.unlockedWorlds.push(name);
-
-  const world=WORLD_NAMES.find(w=>w[1]===name);
-
-  document.getElementById("unlockEmoji").textContent=world?.[0]||"🌎";
-  document.getElementById("unlockTitle").textContent=name+" UNLOCKED";
-  document.getElementById("unlockBy").textContent=
-    "Unlocked by "+game.username;
-
-  const animation=document.getElementById("unlockAnimation");
-  animation.style.display="flex";
-
-  setTimeout(()=>{
-    animation.style.display="none";
-  },1700);
-
-  /* EXACT requested announcement */
-  announce(name+" has been unlocked by "+game.username);
-
-  renderWorlds();
-  saveGame();
-}
-
-/* =========================================================
-   EGGS / CONVEYOR
-========================================================= */
-
-function buyEgg(){
-  if(game.coins<100){
-    announce("Not enough coins!");
-    return;
-  }
-
-  game.coins-=100;
-  game.eggsCollected++;
-
-  spawnConveyorEgg("Basic Egg");
-
-  /* Give a random animal */
-  setTimeout(()=>{
-    hatchAnimal("Basic Egg");
-  },2500);
-
-  renderAll();
-  saveGame();
-}
-
-function spawnConveyorEgg(name){
-  const belt=document.getElementById("factoryConveyor");
-  const home=document.getElementById("homeConveyor");
-
-  [belt,home].forEach(target=>{
-    if(!target)return;
-
-    const egg=document.createElement("div");
-    egg.className="eggOnBelt";
-    egg.textContent="🥚";
-    egg.style.animationDuration=
-      Math.max(3,12-game.conveyorSpeed/2)+"s";
-
-    egg.title=name;
-
-    target.appendChild(egg);
-
-    setTimeout(()=>{
-      egg.remove();
-    },13000);
-  });
-}
-
-function startConveyor(){
-  game.conveyorRunning=true;
-
-  if(conveyorTimer)clearInterval(conveyorTimer);
-
-  conveyorTimer=setInterval(()=>{
-    if(!game.conveyorRunning)return;
-
-    const unlocked=game.unlockedWorlds;
+    if(game.role!=="OWNER"){
+        toast("❌ OWNER ONLY");
+        return;
+    }
 
     const world=
-      unlocked[Math.floor(Math.random()*unlocked.length)];
+        document.getElementById("worldSelect").value;
 
-    const eggs=worldEggs[world]||["Basic Egg"];
+    if(world==="Grasslands"){
+        toast("❌ Grasslands cannot be locked.");
+        return;
+    }
 
-    const egg=eggs[Math.floor(Math.random()*eggs.length)];
+    game.worlds[world]=false;
 
-    spawnConveyorEgg(egg);
-  },4500);
-}
-
-function stopConveyor(){
-  game.conveyorRunning=false;
-  announce("Conveyor stopped.");
-}
-
-function clearConveyor(){
-  document.querySelectorAll(".eggOnBelt").forEach(e=>e.remove());
-  announce("Conveyor cleared.");
-}
-
-function setConveyorSpeed(){
-  const n=Number(document.getElementById("conveyorSpeed").value);
-
-  if(!n)return;
-
-  game.conveyorSpeed=Math.max(1,n);
-  announce("Conveyor speed set to "+game.conveyorSpeed);
-}
-
-/* =========================================================
-   HATCHING
-========================================================= */
-
-function hatchAnimal(eggName){
-  const data=
-    ANIMAL_POOL[Math.floor(Math.random()*ANIMAL_POOL.length)];
-
-  const animal={
-    name:data[0],
-    rarity:data[1],
-    icon:data[2],
-    mutation:"Normal",
-    egg:eggName,
-    id:Date.now()+Math.random()
-  };
-
-  game.animals.push(animal);
-
-  if(data[1]==="Godly" || data[1]==="Omniversal"){
     announce(
-      "🌟 "+game.username+
-      " hatched a "+data[1]+" "+data[0]+"!"
+        world+
+        " has been locked by "+
+        game.username
     );
-  }
 
-  renderAll();
-  saveGame();
+    updateAll();
+
 }
 
-/* =========================================================
-   ANIMALS
-========================================================= */
+function playWorldUnlockAnimation(world){
 
-function renderAnimals(){
-  const grid=document.getElementById("animalsGrid");
+    const overlay=
+        document.getElementById("animationOverlay");
 
-  grid.innerHTML="";
+    const emoji=
+        document.getElementById("animationEmoji");
 
-  if(game.animals.length===0){
-    grid.innerHTML=`
-      <div class="card">
-        <h2>You have 0 animals.</h2>
-        <p>Buy an egg from the Factory!</p>
-      </div>
-    `;
-    return;
-  }
+    const title=
+        document.getElementById("animationTitle");
 
-  game.animals.forEach(a=>{
-    const div=document.createElement("div");
-    div.className="animal";
+    const sub=
+        document.getElementById("animationSub");
 
-    div.innerHTML=`
-      <div class="animalIcon">${a.icon}</div>
-      <h2>${a.name}</h2>
-      <div class="rarity">${a.rarity}</div>
-      <div class="mutation">🧬 ${a.mutation}</div>
-    `;
+    overlay.style.display="flex";
 
-    grid.appendChild(div);
-  });
-}
+    emoji.textContent="🔓🌎";
 
-/* =========================================================
-   OWNER ANIMAL
-========================================================= */
+    title.textContent=world;
 
-function createAnimal(){
-  const name=document.getElementById("customAnimalName").value.trim();
-  const rarity=document.getElementById("customRarity").value;
-  const mutation=document.getElementById("customMutation").value;
+    sub.textContent="WORLD UNLOCKED!";
 
-  if(!name){
-    announce("Enter an animal name.");
-    return;
-  }
+    title.className=
+        "animationTitle worldUnlock";
 
-  game.animals.push({
-    name,
-    rarity,
-    mutation,
-    icon:"🐾",
-    egg:"Owner Created",
-    id:Date.now()+Math.random()
-  });
-
-  announce(
-    game.username+" created "+name+
-    " ["+rarity+"]"
-  );
-
-  document.getElementById("customAnimalName").value="";
-
-  renderAll();
-  saveGame();
-}
-
-/* =========================================================
-   OWNER PLAYER TOOLS
-========================================================= */
-
-function ownerGiveCoins(){
-  const name=document.getElementById("giveCoinsName").value.trim();
-  const amount=Number(document.getElementById("giveCoinsAmount").value);
-
-  if(!name || amount<=0)return;
-
-  if(name.toLowerCase()===game.username.toLowerCase()){
-    game.coins+=amount;
-    renderAll();
-  }
-
-  announce(game.username+" gave "+amount+" coins to "+name);
-  saveGame();
-}
-
-function ownerRemoveCoins(){
-  const name=document.getElementById("removeCoinsName").value.trim();
-  const amount=Number(document.getElementById("removeCoinsAmount").value);
-
-  if(!name || amount<=0)return;
-
-  if(name.toLowerCase()===game.username.toLowerCase()){
-    game.coins=Math.max(0,game.coins-amount);
-    renderAll();
-  }
-
-  announce(game.username+" removed "+amount+" coins from "+name);
-  saveGame();
-}
-
-function ownerGiveGems(){
-  const name=document.getElementById("giveGemsName").value.trim();
-  const amount=Number(document.getElementById("giveGemsAmount").value);
-
-  if(!name || amount<=0)return;
-
-  if(name.toLowerCase()===game.username.toLowerCase()){
-    game.gems+=amount;
-    renderAll();
-  }
-
-  announce(game.username+" gave "+amount+" gems to "+name);
-  saveGame();
-}
-
-function viewPlayerStats(){
-  const name=document.getElementById("statsName").value.trim();
-
-  if(!name)return;
-
-  const out=document.getElementById("statsOutput");
-
-  if(name.toLowerCase()===game.username.toLowerCase()){
-    out.innerHTML=`
-      <hr>
-      🪙 Coins: ${game.coins}<br>
-      💎 Gems: ${game.gems}<br>
-      🐾 Animals: ${game.animals.length}<br>
-      🥚 Eggs: ${game.eggsCollected}
-    `;
-  }else{
-    out.innerHTML="<hr>Player is not in this local browser server.";
-  }
-}
-
-function ownerKick(){
-  const name=document.getElementById("kickName").value.trim();
-
-  if(!name)return;
-
-  announce(name+" was kicked by "+game.username);
-}
-
-function ownerFreeze(){
-  const name=document.getElementById("freezeName").value.trim();
-
-  if(!name)return;
-
-  announce(name+" was frozen by "+game.username);
-}
-
-/* =========================================================
-   OWNER EGG TOOLS
-========================================================= */
-
-function ownerSpawnEgg(){
-  const name=document.getElementById("spawnEggName").value.trim();
-
-  if(!name){
-    announce("Enter an egg name.");
-    return;
-  }
-
-  spawnConveyorEgg(name);
-
-  /* EXACT requested format */
-  announce(game.username+" has spawned "+name);
-
-  document.getElementById("spawnEggName").value="";
-}
-
-function spawnAdminEgg(){
-  const belt=document.getElementById("factoryConveyor");
-
-  const egg=document.createElement("div");
-  egg.className="eggOnBelt";
-  egg.textContent="👑";
-  egg.style.background=
-    "linear-gradient(135deg,#ff2020,#8b0000)";
-  egg.style.borderColor="#ffd700";
-  egg.style.boxShadow="0 0 35px #ffcc00";
-  egg.title="Admin Egg";
-
-  belt.appendChild(egg);
-
-  setTimeout(()=>egg.remove(),13000);
-
-  announce(game.username+" has spawned Admin Egg");
-
-  logAction("Admin Egg spawned");
-}
-
-function spawnInvisibleEgg(){
-  const name=document.getElementById("invisibleEggName").value.trim();
-
-  if(!name)return;
-
-  game.invisibleEggs.push(name);
-
-  announce(
-    "An invisible egg has appeared somewhere in the world..."
-  );
-
-  document.getElementById("invisibleEggName").value="";
-
-  saveGame();
-}
-
-/* =========================================================
-   INVISIBLE EGG SEARCH
-========================================================= */
-
-function petSearchInvisible(){
-  const pet=document.getElementById("searchPet").value.trim();
-  const egg=document.getElementById("hiddenEggName").value.trim();
-
-  if(!pet || !egg)return;
-
-  setTimeout(()=>{
-    announce(pet+" has found "+egg);
-  },1500);
-}
-
-/* =========================================================
-   LUCKY BLOCK
-========================================================= */
-
-function spawnLuckyBlock(){
-  const name=
-    document.getElementById("luckyName").value.trim() ||
-    "Lucky Block";
-
-  const belt=document.getElementById("factoryConveyor");
-
-  const block=document.createElement("div");
-  block.className="eggOnBelt";
-  block.textContent="🎁";
-  block.style.background=
-    "linear-gradient(135deg,#ffdd00,#ff7b00)";
-  block.style.borderColor="#fff";
-  block.style.boxShadow="0 0 35px #ffd000";
-  block.title=name;
-  block.dataset.lucky="true";
-
-  belt.appendChild(block);
-
-  setTimeout(()=>block.remove(),13000);
-
-  announce(game.username+" has spawned "+name);
-}
-
-function clearLuckyBlocks(){
-  document.querySelectorAll('[data-lucky="true"]')
-    .forEach(e=>e.remove());
-
-  announce("Lucky Blocks cleared.");
-}
-
-/* =========================================================
-   EVENTS
-========================================================= */
-
-function runEvent(eventName){
-  announce(game.username+" activated "+eventName);
-
-  const fx=document.getElementById("eventFX");
-
-  if(eventName.includes("Rainbow")){
-    fx.className="rainbow";
+    createParticles(100);
 
     setTimeout(()=>{
-      fx.className="";
-    },10000);
-  }
+        overlay.style.display="none";
+    },2500);
 
-  if(eventName==="Jackpot"){
-    game.coins+=5000;
-    renderAll();
-  }
+}
 
-  if(eventName==="Mutation Mayhem"){
-    game.animals.forEach(a=>{
-      a.mutation=
-        MUTATIONS[Math.floor(Math.random()*MUTATIONS.length)];
+/* ================================
+   ALL ANIMATIONS
+================================ */
+
+function playAnimation(type){
+
+    const overlay=
+        document.getElementById("animationOverlay");
+
+    const emoji=
+        document.getElementById("animationEmoji");
+
+    const title=
+        document.getElementById("animationTitle");
+
+    const sub=
+        document.getElementById("animationSub");
+
+    const animations={
+
+        eggSpawn:[
+            "🥚",
+            "EGG SPAWN",
+            "An egg appeared!"
+        ],
+
+        conveyor:[
+            "➡️",
+            "CONVEYOR",
+            "Egg moving!"
+        ],
+
+        hatch:[
+            "🥚💥",
+            "HATCH!",
+            "Something is inside..."
+        ],
+
+        rare:[
+            "✨🥚✨",
+            "RARE HATCH!",
+            "INCREDIBLE!"
+        ],
+
+        rainbowHatch:[
+            "🌈🥚🌈",
+            "RAINBOW HATCH!",
+            "RAINBOW!"
+        ],
+
+        admin:[
+            "👑🥚",
+            "ADMIN EGG",
+            "OWNER SPAWNED!"
+        ],
+
+        lucky:[
+            "🎁✨",
+            "LUCKY BLOCK!",
+            "LUCKY!"
+        ],
+
+        animal:[
+            "🐾",
+            "ANIMAL FOUND!",
+            "A new animal!"
+        ],
+
+        invisible:[
+            "👻",
+            "INVISIBLE EGG FOUND!",
+            "Discovery!"
+        ],
+
+        fusion:[
+            "🔥🐾🔥",
+            "FUSION!",
+            "Animals combined!"
+        ],
+
+        world:[
+            "🌎",
+            "WORLD!",
+            "Welcome!"
+        ],
+
+        carnival:[
+            "🎪",
+            "CARNIVAL!",
+            "Carnival takeover!"
+        ],
+
+        meteor:[
+            "☄️",
+            "METEOR SHOWER!",
+            "LOOK OUT!"
+        ],
+
+        blood:[
+            "🌑",
+            "BLOOD MOON!",
+            "The moon has risen."
+        ],
+
+        rift:[
+            "🌈🌀",
+            "RAINBOW RIFT!",
+            "A portal opened!"
+        ],
+
+        void:[
+            "🕳️",
+            "VOID RIFT!",
+            "Something is coming..."
+        ],
+
+        godly:[
+            "👑✨",
+            "GODLY INVASION!",
+            "GODLY POWER!"
+        ],
+
+        omni:[
+            "♾️🌌",
+            "OMNIVERSAL RIFT!",
+            "EVERYTHING IS CONNECTING!"
+        ]
+
+    };
+
+    const data=animations[type]||
+        ["✨","EVENT!","Something happened!"];
+
+    overlay.style.display="flex";
+
+    emoji.textContent=data[0];
+    title.textContent=data[1];
+    sub.textContent=data[2];
+
+    title.className="animationTitle";
+
+    createParticles(
+        type==="omni"?180:
+        type==="godly"?120:
+        type==="world"?100:
+        55
+    );
+
+    if(
+        type==="rainbowHatch"||
+        type==="rift"||
+        type==="omni"
+    ){
+        document.getElementById(
+            "rainbowEffect"
+        ).style.display="block";
+    }
+
+    setTimeout(()=>{
+
+        overlay.style.display="none";
+
+        document.getElementById(
+            "rainbowEffect"
+        ).style.display="none";
+
+    },1800);
+
+}
+
+/* ================================
+   PARTICLES
+================================ */
+
+function createParticles(amount){
+
+    for(let i=0;i<amount;i++){
+
+        const p=document.createElement("div");
+
+        p.className="particle";
+
+        p.style.left=
+            (window.innerWidth/2)+"px";
+
+        p.style.top=
+            (window.innerHeight/2)+"px";
+
+        const angle=Math.random()*Math.PI*2;
+
+        const distance=
+            100+Math.random()*500;
+
+        p.style.setProperty(
+            "--x",
+            Math.cos(angle)*distance+"px"
+        );
+
+        p.style.setProperty(
+            "--y",
+            Math.sin(angle)*distance+"px"
+        );
+
+        p.style.background=[
+            "#ff3b3b",
+            "#ffd43b",
+            "#55ff77",
+            "#55ccff",
+            "#d86cff",
+            "#ff55d8"
+        ][Math.floor(Math.random()*6)];
+
+        document.body.appendChild(p);
+
+        setTimeout(()=>{
+            p.remove();
+        },1600);
+
+    }
+
+}
+
+/* ================================
+   PLAYER MANAGER
+================================ */
+
+function renderPlayers(){
+
+    const players=[
+        ...new Set([
+            ...game.onlinePlayers,
+            "NoobyGraham",
+            "AttackJack",
+            "PlayerOne",
+            "PlayerTwo"
+        ])
+    ];
+
+    const admin=
+        document.getElementById("adminPlayer");
+
+    const owner=
+        document.getElementById("ownerPlayer");
+
+    const world=
+        document.getElementById("worldSelect");
+
+    const playerHTML=
+        players.map(p=>
+            `<option value="${p}">
+                ${p}
+            </option>`
+        ).join("");
+
+    if(admin)
+        admin.innerHTML=playerHTML;
+
+    if(owner)
+        owner.innerHTML=playerHTML;
+
+    if(world)
+        world.innerHTML=
+            worldNames.map(w=>
+                `<option>${w}</option>`
+            ).join("");
+
+    selectOwnerPlayer();
+
+}
+
+function selectOwnerPlayer(){
+
+    const player=
+        document.getElementById("ownerPlayer")?.value;
+
+    const info=
+        document.getElementById("selectedPlayerInfo");
+
+    if(!player||!info)return;
+
+    const role=
+        game.ownerUsers.includes(player)
+        ?"👑 OWNER"
+        :game.adminUsers.includes(player)
+        ?"🛡️ ADMIN"
+        :"👤 PLAYER";
+
+    info.innerHTML=`
+        <div class="card">
+            <b>${player}</b><br>
+            Role: ${role}<br>
+            Status: 🟢 ONLINE
+        </div>
+    `;
+
+}
+
+/* ================================
+   OWNER ACTIONS
+================================ */
+
+function ownerAction(action){
+
+    if(game.role!=="OWNER"){
+        toast("❌ OWNER ONLY");
+        return;
+    }
+
+    const target=
+        document.getElementById("ownerPlayer").value;
+
+    if(action==="giveAdmin"){
+
+        if(!game.adminUsers.includes(target))
+            game.adminUsers.push(target);
+
+        announce(
+            target+
+            " has been given Admin by "+
+            game.username
+        );
+
+    }
+
+    if(action==="removeAdmin"){
+
+        game.adminUsers=
+            game.adminUsers.filter(x=>x!==target);
+
+        announce(
+            target+
+            " is no longer an Admin."
+        );
+
+    }
+
+    if(action==="giveOwner"){
+
+        if(!game.ownerUsers.includes(target))
+            game.ownerUsers.push(target);
+
+        announce(
+            target+
+            " has been given Owner by "+
+            game.username
+        );
+
+    }
+
+    if(action==="removeOwner"){
+
+        if(
+            target==="NoobyGraham"||
+            target==="AttackJack"
+        ){
+            toast(
+                "❌ Built-in Owners cannot be removed."
+            );
+            return;
+        }
+
+        game.ownerUsers=
+            game.ownerUsers.filter(x=>x!==target);
+
+        announce(
+            target+
+            " is no longer an Owner."
+        );
+
+    }
+
+    if(action==="coins"){
+        game.coins+=1000;
+        toast("💰 +1,000 Coins");
+    }
+
+    if(action==="removeCoins"){
+        game.coins=Math.max(
+            0,
+            game.coins-1000
+        );
+    }
+
+    if(action==="gems"){
+        game.gems+=500;
+        toast("💎 +500 Gems");
+    }
+
+    if(action==="removeGems"){
+        game.gems=Math.max(
+            0,
+            game.gems-500
+        );
+    }
+
+    if(action==="egg"){
+        game.eggs.push("Basic Egg");
+        toast("🥚 Egg given!");
+    }
+
+    if(action==="animal"){
+        game.animals.push(randomAnimal());
+        toast("🐾 Animal given!");
+    }
+
+    if(action==="kick"){
+        announce(
+            target+
+            " was kicked by "+
+            game.username
+        );
+    }
+
+    if(action==="freeze"){
+
+        if(!game.frozen.includes(target))
+            game.frozen.push(target);
+
+        announce(
+            target+
+            " was frozen."
+        );
+
+    }
+
+    if(action==="reset"){
+
+        if(target===game.username){
+
+            game.coins=100;
+            game.gems=100;
+            game.animals=[];
+            game.eggs=[];
+
+        }
+
+        announce(
+            target+
+            " progress was reset."
+        );
+
+    }
+
+    addLog(
+        game.username+
+        " used "+
+        action+
+        " on "+
+        target
+    );
+
+    updateAll();
+
+}
+
+/* ================================
+   ADMIN ACTIONS
+================================ */
+
+function adminAction(action){
+
+    if(
+        game.role!=="ADMIN" &&
+        game.role!=="OWNER"
+    ){
+        toast("❌ ADMIN ACCESS REQUIRED");
+        return;
+    }
+
+    const target=
+        document.getElementById("adminPlayer").value;
+
+    if(action==="coins")
+        game.coins+=1000;
+
+    if(action==="gems")
+        game.gems+=500;
+
+    if(action==="egg")
+        game.eggs.push("Basic Egg");
+
+    if(action==="animal")
+        game.animals.push(randomAnimal());
+
+    if(action==="kick")
+        announce(target+" was kicked.");
+
+    if(action==="freeze")
+        game.frozen.push(target);
+
+    addLog(
+        game.username+
+        " used Admin "+
+        action+
+        " on "+
+        target
+    );
+
+    updateAll();
+
+}
+
+/* ================================
+   CUSTOM EGG
+================================ */
+
+function createCustomEgg(){
+
+    if(game.role!=="OWNER"){
+        toast("❌ OWNER ONLY");
+        return;
+    }
+
+    const name=
+        document.getElementById("customEggName")
+        .value.trim();
+
+    const color=
+        document.getElementById("customEggColor")
+        .value;
+
+    const price=
+        Number(
+            document.getElementById("customEggPrice")
+            .value
+        )||100;
+
+    if(!name){
+        toast("Enter an egg name.");
+        return;
+    }
+
+    game.customEggs.push({
+        name,
+        color,
+        price
     });
 
-    renderAll();
-  }
+    announce(
+        game.username+
+        " has spawned "+
+        name
+    );
 
-  saveGame();
+    addLog(
+        "Created custom egg: "+name
+    );
+
+    updateAll();
+
 }
 
-/* =========================================================
-   SEASONS
-========================================================= */
-
-function activateSeason(name){
-  announce(name+" is now active!");
-}
-
-/* =========================================================
-   BROADCAST
-========================================================= */
-
-function broadcast(){
-  const text=document.getElementById("announcementText")
-    .value.trim();
-
-  if(!text)return;
-
-  /* Required USERNAME: TEXT format */
-  announce(game.username+": "+text);
-
-  document.getElementById("announcementText").value="";
-}
-
-/* =========================================================
-   MUSIC
-========================================================= */
-
-const musicTracks=[
- "Collect an Egg Radio",
- "Grasslands Adventure",
- "Carnival Night",
- "Halloween Hunt",
- "Galaxy Journey",
- "Void Discovery"
-];
-
-function musicToggle(){
-  game.musicPlaying=!game.musicPlaying;
-
-  announce(
-    game.musicPlaying ?
-    "🎵 Music playing: "+musicTracks[game.musicIndex]:
-    "🔇 Music paused"
-  );
-}
-
-function nextMusic(){
-  game.musicIndex=
-    (game.musicIndex+1)%musicTracks.length;
-
-  document.getElementById("musicName").textContent=
-    musicTracks[game.musicIndex];
-
-  announce("🎵 Now playing: "+musicTracks[game.musicIndex]);
-}
-
-function audioVolume(value){
-  localStorage.setItem("eggVolume",value);
-}
-
-function changeMusic(){
-  const name=document.getElementById("musicTitle").value.trim();
-
-  if(!name)return;
-
-  musicTracks.push(name);
-  game.musicIndex=musicTracks.length-1;
-
-  document.getElementById("musicName").textContent=name;
-
-  announce(game.username+" changed the music to "+name);
-}
-
-/* =========================================================
+/* ================================
    FUSION
-========================================================= */
+================================ */
 
 function renderFusion(){
-  const a=document.getElementById("fusionA");
-  const b=document.getElementById("fusionB");
 
-  if(!a || !b)return;
+    const a=document.getElementById("fusionA");
+    const b=document.getElementById("fusionB");
 
-  a.innerHTML="";
-  b.innerHTML="";
+    if(!a||!b)return;
 
-  game.animals.forEach((animal,i)=>{
-    const o1=document.createElement("option");
-    o1.value=i;
-    o1.textContent=animal.name+" ["+animal.rarity+"]";
+    const html=
+        game.animals.map((animal,i)=>
+            `<option value="${i}">
+                ${animal.name} — ${animal.rarity}
+            </option>`
+        ).join("");
 
-    const o2=o1.cloneNode(true);
+    a.innerHTML=html;
+    b.innerHTML=html;
 
-    a.appendChild(o1);
-    b.appendChild(o2);
-  });
 }
 
-function fuseAnimals(){
-  if(game.animals.length<2){
-    document.getElementById("fusionStatus").textContent=
-      "You need at least 2 animals.";
-    return;
-  }
+function startFusion(){
 
-  const a=Number(document.getElementById("fusionA").value);
-  const b=Number(document.getElementById("fusionB").value);
+    const ai=
+        Number(
+            document.getElementById("fusionA").value
+        );
 
-  if(a===b){
-    document.getElementById("fusionStatus").textContent=
-      "Choose two different animals.";
-    return;
-  }
+    const bi=
+        Number(
+            document.getElementById("fusionB").value
+        );
 
-  const first=game.animals[a];
-  const second=game.animals[b];
-
-  const result={
-    name:first.name+"-"+second.name+" Fusion",
-    rarity:RARITIES[
-      Math.min(
-        RARITIES.length-1,
+    const seconds=
         Math.max(
-          RARITIES.indexOf(first.rarity),
-          RARITIES.indexOf(second.rarity)
-        )+1
-      )
-    ],
-    mutation:
-      first.mutation==="Normal" ?
-      second.mutation :
-      first.mutation,
-    icon:"🧬",
-    egg:"Fusion",
-    id:Date.now()+Math.random()
-  };
+            1,
+            Number(
+                document.getElementById("fusionTime").value
+            )||10
+        );
 
-  const time=
-    Number(document.getElementById("fusionTime").value) ||
-    game.fusionTime;
+    const a=game.animals[ai];
+    const b=game.animals[bi];
 
-  document.getElementById("fusionStatus").textContent=
-    "Fusion started! "+time+" seconds...";
+    if(!a||!b){
+        toast("Need two animals.");
+        return;
+    }
 
-  setTimeout(()=>{
-    game.animals.splice(
-      Math.max(a,b),1
-    );
+    if(a.rarity!==b.rarity){
+        toast(
+            "⚠️ Animals must have the same rarity."
+        );
+        return;
+    }
 
-    game.animals.splice(
-      Math.min(a,b),1
-    );
+    playAnimation("fusion");
 
-    game.animals.push(result);
+    document.getElementById("fusionStatus")
+        .innerHTML=
+        "🔥 Fusion running for "+
+        seconds+
+        " seconds...";
 
-    document.getElementById("fusionStatus").textContent=
-      "🔥 Fusion complete!";
+    setTimeout(()=>{
 
-    announce(
-      game.username+" fused "+result.name
-    );
+        const first=Math.max(ai,bi);
+        const second=Math.min(ai,bi);
 
-    renderAll();
-    saveGame();
-  },time*1000);
+        game.animals.splice(first,1);
+        game.animals.splice(second,1);
+
+        const fused=randomAnimal();
+
+        const rarityIndex=
+            Math.min(
+                rarities.indexOf(a.rarity)+1,
+                rarities.length-1
+            );
+
+        fused.rarity=
+            rarities[rarityIndex];
+
+        fused.mutation="Fusion";
+
+        game.animals.push(fused);
+
+        playAnimation("rare");
+
+        document.getElementById("fusionStatus")
+            .innerHTML=
+            "🔥 Fusion Complete!";
+
+        updateAll();
+
+    },seconds*1000);
+
 }
 
-function setFusionTime(){
-  const t=Number(document.getElementById("ownerFusionTime").value);
-
-  if(t>0){
-    game.fusionTime=t;
-    announce("Fusion time set to "+t+" seconds.");
-  }
-}
-
-/* =========================================================
+/* ================================
    TRADING
-========================================================= */
+================================ */
 
-function renderTradingAnimals(){
-  const box=document.getElementById("tradeAnimals");
-  if(!box)return;
+function renderTrading(){
 
-  box.innerHTML="";
+    const box=
+        document.getElementById("tradePlayers");
 
-  game.animals.forEach(a=>{
-    const d=document.createElement("div");
-    d.className="animal";
-    d.innerHTML=`
-      ${a.icon}
-      <b>${a.name}</b>
-      <small>${a.rarity}</small>
-    `;
-    box.appendChild(d);
-  });
+    if(!box)return;
+
+    box.innerHTML=
+        game.onlinePlayers
+        .filter(p=>p!==game.username)
+        .map(p=>`
+
+            <div class="playerRow">
+
+                🟢 <b>${p}</b>
+
+                <button
+                    onclick="tradeRequest('${p}')">
+                    🔄 TRADE
+                </button>
+
+            </div>
+
+        `).join("")||
+        "No other players online.";
+
 }
 
-function sendTrade(){
-  if(!game.trading){
-    announce("Trading is disabled.");
-    return;
-  }
+function tradeRequest(player){
 
-  const name=document.getElementById("tradePlayer")
-    .value.trim();
+    if(!tradingEnabled){
+        toast("🔒 Trading is disabled.");
+        return;
+    }
 
-  if(!name)return;
+    const box=
+        document.getElementById("tradeBox");
 
-  const box=document.getElementById("tradeRequests");
+    box.classList.remove("hidden");
 
-  const request=document.createElement("div");
-  request.className="card";
+    box.innerHTML=`
 
-  request.innerHTML=`
-    🔄 Trade request sent to <b>${name}</b><br><br>
-    <button onclick="this.parentElement.remove()">Cancel</button>
-  `;
+        <h2>🔄 Trade Request</h2>
 
-  box.appendChild(request);
+        <p>
+            Trading with <b>${player}</b>
+        </p>
 
-  announce(
-    game.username+" sent a trade request to "+name
-  );
+        <button onclick="acceptTrade('${player}')">
+            ✅ ACCEPT
+        </button>
+
+        <button onclick="declineTrade()">
+            ❌ DECLINE
+        </button>
+
+    `;
+
+}
+
+function acceptTrade(player){
+
+    toast(
+        "🔄 Trade accepted with "+player
+    );
+
+    document.getElementById("tradeBox")
+        .classList.add("hidden");
+
+}
+
+function declineTrade(){
+
+    document.getElementById("tradeBox")
+        .classList.add("hidden");
+
 }
 
 function toggleTrading(){
-  game.trading=!game.trading;
 
-  document.getElementById("tradingState").textContent=
-    "Trading: "+(game.trading?"ON":"OFF");
+    tradingEnabled=!tradingEnabled;
 
-  announce(
-    "Trading is now "+(game.trading?"ON":"OFF")
-  );
+    updateTradingStatus();
+
 }
 
-/* =========================================================
+function updateTradingStatus(){
+
+    const el=
+        document.getElementById("tradingStatus");
+
+    if(el)
+        el.textContent=
+            tradingEnabled
+            ?"🟢 Trading ENABLED"
+            :"🔴 Trading DISABLED";
+
+}
+
+/* ================================
+   POLLS
+================================ */
+
+function createPoll(){
+
+    if(game.role!=="OWNER"){
+        toast("❌ OWNER ONLY");
+        return;
+    }
+
+    const question=
+        document.getElementById("pollQuestion")
+        .value.trim();
+
+    const options=[
+        document.getElementById("pollOption1")
+            .value.trim(),
+
+        document.getElementById("pollOption2")
+            .value.trim(),
+
+        document.getElementById("pollOption3")
+            .value.trim()
+    ].filter(Boolean);
+
+    if(!question||options.length<2){
+        toast(
+            "Need a question and at least 2 options."
+        );
+        return;
+    }
+
+    currentPoll={
+        question,
+        options,
+        votes:{},
+        voted:false
+    };
+
+    announce(
+        "🗳️ NEW POLL: "+question
+    );
+
+    updateAll();
+
+}
+
+function renderPoll(){
+
+    const areas=[
+        document.getElementById("homePoll"),
+        document.getElementById("pollPreview")
+    ];
+
+    areas.forEach(box=>{
+
+        if(!box)return;
+
+        if(!currentPoll){
+
+            box.innerHTML=
+                "No active poll.";
+
+            return;
+        }
+
+        box.innerHTML=`
+
+            <h3>
+                ${currentPoll.question}
+            </h3>
+
+            ${currentPoll.options.map(
+                (option,i)=>`
+
+                <button
+                    class="pollOption"
+                    onclick="votePoll(${i})">
+
+                    ${option}
+
+                </button>
+
+            `).join("")}
+
+        `;
+
+    });
+
+}
+
+function votePoll(index){
+
+    if(!currentPoll)return;
+
+    if(currentPoll.voted){
+        toast("You already voted!");
+        return;
+    }
+
+    currentPoll.voted=true;
+
+    currentPoll.votes[
+        game.username
+    ]=index;
+
+    toast("🗳️ Vote submitted!");
+
+    renderPoll();
+
+}
+
+function endPoll(){
+
+    if(game.role!=="OWNER")return;
+
+    currentPoll=null;
+
+    announce("🗳️ Poll ended.");
+
+    updateAll();
+
+}
+
+/* ================================
+   COUNTDOWN
+================================ */
+
+function startCountdown(){
+
+    if(game.role!=="OWNER"){
+        toast("❌ OWNER ONLY");
+        return;
+    }
+
+    const title=
+        document.getElementById("countdownTitle")
+        .value.trim()||
+        "Event Starting";
+
+    const seconds=
+        Math.max(
+            1,
+            Number(
+                document.getElementById("countdownSeconds")
+                .value
+            )||60
+        );
+
+    countdownData={
+        title,
+        end:Date.now()+seconds*1000
+    };
+
+    announce(
+        "⏰ "+
+        title+
+        " starts in "+
+        seconds+
+        " seconds!"
+    );
+
+    clearInterval(countdownTimer);
+
+    countdownTimer=setInterval(()=>{
+
+        if(!countdownData)return;
+
+        const remaining=
+            Math.max(
+                0,
+                Math.ceil(
+                    (countdownData.end-Date.now())
+                    /1000
+                )
+            );
+
+        countdownData.remaining=remaining;
+
+        renderCountdown();
+
+        if(remaining<=0){
+
+            clearInterval(countdownTimer);
+
+            announce(
+                "🚨 "+
+                countdownData.title+
+                " HAS STARTED!"
+            );
+
+        }
+
+    },250);
+
+}
+
+function stopCountdown(){
+
+    clearInterval(countdownTimer);
+
+    countdownData=null;
+
+    renderCountdown();
+
+    announce(
+        "⏰ Countdown stopped."
+    );
+
+}
+
+function renderCountdown(){
+
+    const html=
+        countdownData
+        ?`
+        <div class="countdown">
+            ${countdownData.title}
+            <br>
+            ${countdownData.remaining??0}
+        </div>
+        `
+        :"No active countdown.";
+
+    const home=
+        document.getElementById("homeCountdown");
+
+    const owner=
+        document.getElementById(
+            "ownerCountdownPreview"
+        );
+
+    if(home)home.innerHTML=html;
+    if(owner)owner.innerHTML=html;
+
+}
+
+/* ================================
+   EVENTS
+================================ */
+
+function eventStart(name){
+
+    if(game.role!=="OWNER"){
+        toast("❌ OWNER ONLY");
+        return;
+    }
+
+    announce(
+        "EVENT STARTED: "+name
+    );
+
+    const animationMap={
+        "Rainbow Screen":"rainbowHatch",
+        "Carnival Takeover":"carnival",
+        "Meteor Shower":"meteor",
+        "Eggpocalypse":"eggSpawn",
+        "Rainbow Rift":"rift",
+        "Void Rift":"void",
+        "Mutation Mayhem":"fusion",
+        "Jackpot":"rare",
+        "Blood Moon":"blood",
+        "Dragon Storm":"rare",
+        "Factory Meltdown":"meteor",
+        "Galaxy Collapse":"omni",
+        "Universal Shift":"world",
+        "Godly Invasion":"godly",
+        "Omniversal Rift":"omni"
+    };
+
+    playAnimation(
+        animationMap[name]||"rare"
+    );
+
+    if(name==="Jackpot"){
+        game.coins+=10000;
+        toast("🎰 +10,000 Coins!");
+    }
+
+    if(name==="Godly Invasion"){
+        game.gems+=5000;
+        toast("👑 +5,000 Gems!");
+    }
+
+    updateAll();
+
+}
+
+/* ================================
+   BROADCAST
+================================ */
+
+function broadcast(){
+
+    if(game.role!=="OWNER"){
+        toast("❌ OWNER ONLY");
+        return;
+    }
+
+    const text=
+        document.getElementById("announcementText")
+        .value.trim();
+
+    if(!text){
+        toast("Type an announcement.");
+        return;
+    }
+
+    announce(
+        game.username+
+        ": "+
+        text
+    );
+
+    addLog(
+        game.username+
+        ": "+
+        text
+    );
+
+}
+
+/* ================================
+   MUSIC
+================================ */
+
+const musicTracks=[
+    "🥚 Egg Factory",
+    "🌎 World Adventure",
+    "🎪 Carnival Season",
+    "🌈 Rainbow Event",
+    "🔥 Fusion",
+    "👻 Invisible Egg Search"
+];
+
+let musicIndex=0;
+let musicPlaying=true;
+
+function toggleMusic(){
+
+    musicPlaying=!musicPlaying;
+
+    document.getElementById("musicTitle")
+        .textContent=
+        musicPlaying
+        ?"🎵 "+musicTracks[musicIndex]
+        :"⏸️ Music Paused";
+
+}
+
+function nextMusic(){
+
+    musicIndex=
+        (musicIndex+1)%
+        musicTracks.length;
+
+    if(musicPlaying){
+
+        document.getElementById(
+            "musicTitle"
+        ).textContent=
+            "🎵 "+musicTracks[musicIndex];
+
+    }
+
+}
+
+document.getElementById(
+    "musicVolume"
+).oninput=function(){
+
+    document.getElementById(
+        "volText"
+    ).textContent=
+        this.value+"%";
+
+};
+
+/* ================================
    SHOP
-========================================================= */
+================================ */
+
+function buyCoins(){
+
+    if(game.gems<50){
+        toast("Not enough gems.");
+        return;
+    }
+
+    game.gems-=50;
+    game.coins+=1000;
+
+    updateAll();
+
+}
 
 function buyGems(){
-  game.gems+=100;
-  announce("+100 Gems!");
-  renderAll();
-  saveGame();
+
+    if(game.coins<500){
+        toast("Not enough coins.");
+        return;
+    }
+
+    game.coins-=500;
+    game.gems+=500;
+
+    updateAll();
+
 }
 
-function giveCoinsLocal(amount){
-  game.coins+=amount;
-  announce("+ "+amount+" Coins!");
-  renderAll();
-  saveGame();
-}
-
-function economyGive(){
-  const amount=Number(document.getElementById("economyCoins").value);
-
-  if(amount>0){
-    game.coins+=amount;
-    announce("+ "+amount+" coins!");
-    renderAll();
-    saveGame();
-  }
-}
-
-/* =========================================================
+/* ================================
    QUESTS
-========================================================= */
+================================ */
 
 function claimQuest(type){
-  if(type==="egg" && game.eggsCollected>=5){
-    game.gems+=50;
-    announce("Quest complete! +50 Gems");
-  }
-  else if(type==="animal" && game.animals.length>=1){
-    game.coins+=250;
-    announce("Quest complete! +250 Coins");
-  }
-  else{
-    announce("Quest not completed yet.");
-  }
 
-  renderAll();
-  saveGame();
+    if(game.quests[type]){
+        toast("Already claimed!");
+        return;
+    }
+
+    game.quests[type]=true;
+
+    if(type==="buy")
+        game.coins+=250;
+
+    if(type==="hatch")
+        game.gems+=100;
+
+    toast("🎁 Quest reward claimed!");
+
+    updateAll();
+
 }
 
-/* =========================================================
-   SKINS
-========================================================= */
+/* ================================
+   ANNOUNCEMENT
+================================ */
 
-function createSkin(){
-  const name=document.getElementById("skinName").value.trim();
+function announce(text){
 
-  if(!name)return;
+    const el=
+        document.createElement("div");
 
-  game.skins.push({
-    name,
-    color1:document.getElementById("skinColor1").value,
-    color2:document.getElementById("skinColor2").value,
-    glow:document.getElementById("skinGlow").checked
-  });
+    el.className="announcement";
 
-  announce(game.username+" created Egg Skin: "+name);
+    el.textContent=text;
 
-  document.getElementById("skinName").value="";
+    document.body.appendChild(el);
 
-  saveGame();
+    setTimeout(()=>{
+        el.remove();
+    },4000);
+
 }
 
-/* =========================================================
-   OWNER TABS
-========================================================= */
+/* ================================
+   TOAST
+================================ */
 
-function ownerTab(tab){
-  document.querySelectorAll(".ownerSection")
-    .forEach(s=>s.classList.remove("active"));
+function toast(text){
 
-  const section=document.getElementById("owner-"+tab);
+    const el=
+        document.createElement("div");
 
-  if(section)section.classList.add("active");
+    el.className="toast";
+
+    el.textContent=text;
+
+    document.body.appendChild(el);
+
+    setTimeout(()=>{
+        el.remove();
+    },3000);
+
 }
 
-/* =========================================================
-   LOGGING
-========================================================= */
+/* ================================
+   LOG
+================================ */
 
-function logAction(text){
-  game.logs.unshift(
-    new Date().toLocaleTimeString()+" — "+text
-  );
+function addLog(text){
 
-  game.logs=game.logs.slice(0,100);
+    logs.unshift(
+        new Date().toLocaleTimeString()+
+        " — "+
+        text
+    );
 
-  renderLogs();
+    if(logs.length>100)
+        logs.pop();
+
+    renderLogs();
+
 }
 
 function renderLogs(){
-  const box=document.getElementById("activityLog");
 
-  if(!box)return;
+    const box=
+        document.getElementById("activityLog");
 
-  box.innerHTML=
-    game.logs.length ?
-    game.logs.map(x=>"<div>"+escapeHTML(x)+"</div>").join(""):
-    "No activity yet.";
+    if(!box)return;
+
+    box.innerHTML=
+        logs.length
+        ?logs.map(x=>
+            `<div class="playerRow">
+                ${x}
+            </div>`
+        ).join("")
+        :"No activity yet.";
+
 }
 
-function escapeHTML(text){
-  return text
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;");
-}
+/* ================================
+   START
+================================ */
 
-/* =========================================================
-   OTHER OWNER CONTROLS
-========================================================= */
-
-function resetWorlds(){
-  if(game.role!=="OWNER")return;
-
-  game.unlockedWorlds=["Grasslands"];
-
-  announce("Worlds reset. Only Grasslands is unlocked.");
-
-  renderWorlds();
-  saveGame();
-}
-
-/* =========================================================
-   INITIAL DEFAULT
-========================================================= */
-
-ownerTab("players");
-
-/*
-  Generate 1,200 built-in Owner Egg Skins conceptually.
-  They are Owner-only and never naturally spawn.
-*/
-const BUILT_IN_SKINS=Array.from(
-  {length:1200},
-  (_,i)=>"Owner Egg Skin "+(i+1)
-);
-
-document.getElementById("skinCount").textContent=
-  BUILT_IN_SKINS.length+
-  " built-in Owner Egg Skins available";
-
-/* Save when leaving */
-window.addEventListener("beforeunload",saveGame);
+updateAll();
 
 </script>
 
